@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Search_Eat_PIS</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="title_activity_main_menu_navegacion">MainMenu_Navegacion</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="ordenar">Ordenar</string>
+    <string name="abierto">Abierto</string>
 </resources>

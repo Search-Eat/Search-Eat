@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Search_Eat_PIS">
-
+        <activity
+            android:name=".Vista.MainMenu_Navegacion"
+            android:exported="false"
+            android:label="@string/title_activity_main_menu_navegacion" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
