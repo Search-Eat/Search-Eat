@@ -7,4 +7,13 @@
     <string name="title_notifications">Notifications</string>
     <string name="ordenar">Ordenar</string>
     <string name="abierto">Abierto</string>
+    <string name="imagen_de_reserva">imagen de reserva</string>
+    <string name="iamgen_restaurante">iamgen restaurante</string>
+    <string name="reserva">Reserva:</string>
+    <string name="boton_para_puntuar">boton para puntuar</string>
+    <string name="boton_para_puntuar">boton para puntuar</string>
+    <string name="boton_para_puntuar">boton para puntuar</string>
+    <string name="boton_para_puntuar">boton para puntuar</string>
+    <string name="boton_para_puntuar">boton para puntuar</string>
+    <string name="boton_para_ir_al_maps">Boton para ir al maps</string>
 </resources>
