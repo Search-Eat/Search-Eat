@@ -16,4 +16,8 @@
     <string name="boton_para_puntuar4">boton para puntuar</string>
     <string name="boton_para_puntuar5">boton para puntuar</string>
     <string name="boton_para_ir_al_maps">Boton para ir al maps</string>
+    <string name="Email">Email</string>
+    <string name="Password">Password</string>
+    <string name="Nombre">Nombre</string>
+    <string name="Num_tel">Num_tel</string>
 </resources>
