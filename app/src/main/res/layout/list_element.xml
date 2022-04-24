@@ -99,7 +99,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/round_bnt_star"
-                android:contentDescription="@string/boton_para_puntuar"
+                android:contentDescription="@string/boton_para_puntuar1"
                 android:minHeight="36dp"
                 app:srcCompat="@drawable/ic_star_white_24dp"
                 tools:ignore="DuplicateSpeakableTextCheck" />
@@ -110,7 +110,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/round_bnt_star"
-                android:contentDescription="@string/boton_para_puntuar"
+                android:contentDescription="@string/boton_para_puntuar2"
                 android:minHeight="48dp"
                 app:srcCompat="@drawable/ic_star_white_24dp"
                 tools:ignore="TouchTargetSizeCheck" />
@@ -121,7 +121,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/round_bnt_star"
-                android:contentDescription="@string/boton_para_puntuar"
+                android:contentDescription="@string/boton_para_puntuar3"
                 android:minHeight="48dp"
                 app:srcCompat="@drawable/ic_star_white_24dp"
                 tools:ignore="TouchTargetSizeCheck" />
@@ -132,7 +132,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/round_bnt_star"
-                android:contentDescription="@string/boton_para_puntuar"
+                android:contentDescription="@string/boton_para_puntuar4"
                 android:minHeight="48dp"
                 app:srcCompat="@drawable/ic_star_white_24dp"
                 tools:ignore="TouchTargetSizeCheck" />
@@ -143,7 +143,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/round_bnt_star"
-                android:contentDescription="@string/boton_para_puntuar"
+                android:contentDescription="@string/boton_para_puntuar5"
                 android:minHeight="48dp"
                 app:srcCompat="@drawable/ic_star_white_24dp"
                 tools:ignore="TouchTargetSizeCheck" />
@@ -168,7 +168,7 @@
                     android:layout_width="328dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text=" Dirección:" />
+                    android:text=" Distancia:" />
 
                 <TextView
                     android:id="@+id/Precio"

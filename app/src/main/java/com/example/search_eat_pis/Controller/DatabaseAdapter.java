@@ -1,15 +1,19 @@
-package com.example.test;
+package com.example.search_eat_pis.Controller;
+import com.example.search_eat_pis.Model.Coordenada;
+import com.example.search_eat_pis.Model.Sector;
+import com.example.search_eat_pis.Model.Local;
+
 
 import android.app.Activity;
 import android.net.Uri;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,7 +35,7 @@ import java.util.concurrent.Executor;
 
 public class DatabaseAdapter extends Activity {
 
-    public static final String TAG = "DatabaseAdapter";
+   public static final String TAG = "DatabaseAdapter";
 
     public static FirebaseFirestore db = FirebaseFirestore.getInstance();
     private final FirebaseStorage storage = FirebaseStorage.getInstance();

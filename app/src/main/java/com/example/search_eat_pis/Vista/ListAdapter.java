@@ -1,5 +1,5 @@
 package com.example.search_eat_pis.Vista;
-import com.example.search_eat_pis.Model.ListElement;
+import com.example.search_eat_pis.Model.Local;
 import com.example.search_eat_pis.R;
 
 import android.content.Context;
@@ -17,11 +17,11 @@ import java.util.List;
 
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
-    private  List<ListElement> mData;
+    private  List<Local> mData;
     private LayoutInflater mInflater;
     private Context context;
 
-    public ListAdapter(List<ListElement> itemlist, Context context){
+    public ListAdapter(List<Local> itemlist, Context context){
         this.mInflater = LayoutInflater.from(context);
         this.context=context;
         this.mData=itemlist;
@@ -37,10 +37,10 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     }
     @Override
     public void onBindViewHolder(final ListAdapter.ViewHolder holder, final int position){
-        holder.binData(mData.get(position));
+        //holder.binData(mData.get(position));
     }
 
-    public void setItems(List<ListElement> items){mData=items;}
+    public void setItems(List<Local> items){mData=items;}
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView iconImage;
@@ -60,9 +60,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             reserva = itemView.findViewById(R.id.Reserva);
         }
 
-        void bindData(final ListElement item){
+        void bindData(final Local item){
 
-            iconImage.setColorFilter(Color.parseColor(item.getColor()),PortedDuff.Mode);
+            //iconImage.setColorFilter(Color.parseColor(item.getColor()),PortedDuff.Mode);
 
         }
     }

@@ -1,13 +1,10 @@
-package com.example.test;
-
-import android.util.Log;
+package com.example.search_eat_pis.Model;
 
 import java.util.ArrayList;
 import java.lang.String;
-import com.example.test.Coordenada;
+import com.example.search_eat_pis.Controller.DatabaseAdapter;
 
-class Local {
-
+public class Local {
     private final String iD;
     private final String direccion;
     private final ArrayList<String> etiquetas;
@@ -19,6 +16,8 @@ class Local {
     private final long precio;
     private double distancia;
     private final DatabaseAdapter adapter = DatabaseAdapter.databaseAdapter;
+    private String color;
+
 
     public Local(String id, String direccion, ArrayList<String> etiquetas, double latitud, double longitud, String nombre, Object valoración, long num_valoraciones, String foto, long precio){
         this.iD = id;
@@ -36,7 +35,6 @@ class Local {
         this.num_valoraciones = num_valoraciones;
         this.foto = foto;
         this.precio = precio;
-
     }
 
     public void setDistancia(Coordenada c){
