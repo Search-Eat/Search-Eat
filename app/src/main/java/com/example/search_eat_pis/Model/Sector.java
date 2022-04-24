@@ -1,8 +1,8 @@
-package com.example.test;
+package com.example.search_eat_pis.Model;
 
 import java.util.ArrayList;
 
-class Sector {
+public class Sector {
     private final Coordenada coordenada;
     private final ArrayList<String> restaurant;
     private final ArrayList<String> bar;

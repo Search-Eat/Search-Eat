@@ -1,4 +1,4 @@
-package com.example.test;
+package com.example.search_eat_pis.Model;
 
 import java.lang.Math;
 
