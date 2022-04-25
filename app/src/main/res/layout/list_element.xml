@@ -33,7 +33,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:contentDescription="Imagen del restaurante"
+                    android:contentDescription="@string/imagen_del_restaurante"
                     app:srcCompat="@drawable/ic_restaurant_black_24dp" />
             </LinearLayout>
 
@@ -48,7 +48,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="Nombre_restaurante"
+                    android:text="@string/nombre_restaurante"
                     android:textSize="18sp" />
             </LinearLayout>
 
@@ -70,7 +70,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/Boton de reserva"
+                android:id="@+id/Boton_de_reserva"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
@@ -90,63 +90,22 @@
         <LinearLayout
             android:id="@+id/Valoracion"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="51dp"
+            android:orientation="vertical">
 
-            <ImageButton
-                android:id="@+id/Estrella1"
-                android:layout_width="8dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/round_bnt_star"
-                android:contentDescription="@string/boton_para_puntuar1"
-                android:minHeight="36dp"
-                app:srcCompat="@drawable/ic_star_white_24dp"
-                tools:ignore="DuplicateSpeakableTextCheck" />
-
-            <ImageButton
-                android:id="@+id/Estrella2"
-                android:layout_width="8dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/round_bnt_star"
-                android:contentDescription="@string/boton_para_puntuar2"
-                android:minHeight="48dp"
-                app:srcCompat="@drawable/ic_star_white_24dp"
-                tools:ignore="TouchTargetSizeCheck" />
-
-            <ImageButton
-                android:id="@+id/Estrella3"
-                android:layout_width="8dp"
+            <TextView
+                android:id="@+id/puntacion"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/round_bnt_star"
-                android:contentDescription="@string/boton_para_puntuar3"
-                android:minHeight="48dp"
-                app:srcCompat="@drawable/ic_star_white_24dp"
-                tools:ignore="TouchTargetSizeCheck" />
+                android:text="@string/puntuaci_n" />
 
-            <ImageButton
-                android:id="@+id/Estrella4"
-                android:layout_width="8dp"
+            <TextView
+                android:id="@+id/direccion"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/round_bnt_star"
-                android:contentDescription="@string/boton_para_puntuar4"
-                android:minHeight="48dp"
-                app:srcCompat="@drawable/ic_star_white_24dp"
-                tools:ignore="TouchTargetSizeCheck" />
-
-            <ImageButton
-                android:id="@+id/Estrella5"
-                android:layout_width="8dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/round_bnt_star"
-                android:contentDescription="@string/boton_para_puntuar5"
-                android:minHeight="48dp"
-                app:srcCompat="@drawable/ic_star_white_24dp"
-                tools:ignore="TouchTargetSizeCheck" />
+                android:text="@string/direcci_n" />
 
         </LinearLayout>
 
@@ -158,28 +117,30 @@
             android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/distancia_precio"
                 android:layout_width="371dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/Direccion"
-                    android:layout_width="328dp"
+                    android:id="@+id/distancia"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text=" Distancia:" />
+                    android:text="@string/distancia" />
 
                 <TextView
-                    android:id="@+id/Precio"
-                    android:layout_width="300dp"
+                    android:id="@+id/precio"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text=" Precio:" />
+                    android:text="@string/precio" />
 
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/btn_mapa"
                 android:layout_width="140dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Search_Eat_PIS" >
         <activity
-            android:name=".RegisterActivity"
+            android:name=".Vista.RegisterActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".Vista.LoginActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
