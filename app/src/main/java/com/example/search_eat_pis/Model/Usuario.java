@@ -2,6 +2,7 @@ package com.example.search_eat_pis.Model;
 
 import android.util.Log;
 import java.util.ArrayList;
+import com.example.search_eat_pis.Controller.DatabaseAdapter;
 
 public class Usuario {
     private String correo;
@@ -29,6 +30,10 @@ public class Usuario {
 
     public void addReserva(String r){
         this.reservas.add(r);
+    }
+
+    public void updateUsuario(){
+        adapter.updateReservas(reservas, correo);
     }
 
     public void deleteReserva(String r){
