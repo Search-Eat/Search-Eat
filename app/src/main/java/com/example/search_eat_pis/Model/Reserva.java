@@ -8,11 +8,16 @@ import com.example.search_eat_pis.Controller.DatabaseAdapter;
 
 public class Reserva {
     private String reservaID;
+    private String nombre;
     private String restaurante;
+    private long telefono
     private Calendar fecha;
+    private long personas;
     private final DatabaseAdapter adapter = DatabaseAdapter.databaseAdapter;
 
-    public Reserva(String restaurante, long año, long mes, long dia, long hora, long minuto) {
+    public Reserva(String nombre, long telefono, String restaurante, long personas, long año, long mes, long dia, long hora, long minuto) {
+        this.nombre = nombre;
+        this.telefono = telefono;
         UUID uuid = UUID.randomUUID();
         this.reservaId = uuid.toString();
         this.restaurante = restaurante;
@@ -24,7 +29,7 @@ public class Reserva {
     }
 
     public void saveReserva() {
-        adapter.saveReserva(reservaID, restaurante, fecha.get(Calendar.YEAR), fecha.get(Calendar.MONTH), fecha.get(Calendar.DAY_OF_MONTH), fecha.get(Calendar.HOUR_OF_DAY), fecha.get(Calendar.MINUTE));
+        adapter.saveReserva(reservaID, nombre, telefono, restaurante, personas, fecha.get(Calendar.YEAR), fecha.get(Calendar.MONTH), fecha.get(Calendar.DAY_OF_MONTH), fecha.get(Calendar.HOUR_OF_DAY), fecha.get(Calendar.MINUTE));
     }
 
     public void deleteReserva() {
