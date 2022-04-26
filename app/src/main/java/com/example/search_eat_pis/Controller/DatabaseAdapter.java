@@ -145,11 +145,163 @@ public class DatabaseAdapter extends Activity {
                 });
     }
 
+
+
     public void updateValoracion(String id, String val, String num_val){
+        Log.d(TAG, "updateValoracion");
         db.collection("Locales").document(id)
                 .update(
                         "valoración", val,
                         "valoraciones", num_val
+                );
+    }
+
+    public void saveUsuario (String correo, String nombre, long telefono, String contraseña, ArrayList<String> reservas) {
+
+        // Create a new user with a first and last name
+        Map<String, Object> usuario = new HashMap<>();
+        usuario.put("correo", correo);
+        usuario.put("nombre", nombre);
+        usuario.put("teléfono", telefono);
+        usuario.put("contraseña", contraseña);
+        usuario.put("reservas", resevas);
+
+        Log.d(TAG, "saveUsuarios");
+        // Add a new document with a generated ID
+        db.collection("Usuarios")
+                .add(usuario)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.get("correo");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error adding document", e);
+                    }
+                });
+    }
+
+    public void saveReserva (String id, String restaurante, long año, long dia, long mes, long hora, long minuto) {
+
+        // Create a new user with a first and last name
+        Map<String, Object> note = new HashMap<>();
+        reserva.put("id", id);
+        reserva.put("restaurante", restaurante);
+        reserva.put("año", año);
+        reserva.put("dia", dia);
+        reserva.put("mes", mes);
+        reserva.put("hora", hora);
+        reserva.put("minuto", minuto);
+
+        Log.d(TAG, "saveReserva");
+        // Add a new document with a generated ID
+        db.collection("Reserva")
+                .add(reserva)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.get("id");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error adding document", e);
+                    }
+                });
+    }
+
+    public void getReservas(ArrayList<String> reservas){
+        Log.d(TAG, "getReserva");
+        DatabaseAdapter.db.collection("Reservas")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+
+                            ArrayList<Local> retrieved_r = new ArrayList<Local>();
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                if (reservas.contains(document.getId())){
+                                    Log.d(TAG, document.getId() + " => " + document.getData());
+                                    Reserva r = new Reserva(document.getString("restaurantes"),
+                                            (long)          document.get("año"),
+                                            (long)          document.get("mes"),
+                                            (long)          document.get("dia"),
+                                            (long)          document.get("hora"),
+                                            (long)          document.get("minuto"));
+                                    r.setId(document.getId());
+                                    retrieved_r.add(r);
+                                }
+
+                            }
+                            listener.setReservas(retrieved_r);
+
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+    }
+
+    public void getUsuario(String correo, String contraseña){
+        Log.d(TAG, "getUsuario");
+        DatabaseAdapter.db.collection("Usuarios")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                if (correo.equals(document.getId())){
+                                    Log.d(TAG, document.getId() + " => " + document.getData());
+                                    if(contraseña.equals(document.getString("contraseña"))){
+                                        Usuario usuario = new Usuario(document.getString("correo"),
+                                                document.getString("nombre"),
+                                                (long)          document.get("telefono"),
+                                                document.getString("contraseña"),
+                                                (ArrayList<String>) document.get("reservas"));
+                                    }
+                                    else{
+                                        Usuario usuario = null;
+                                    }
+                                }
+
+                            }
+                            listener.setUsuarios(usuario);
+
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+    }
+
+    public void deleteReserva(String id){
+        Log.d(TAG, "deleteReserva");
+        db.collection("Reservas").document(id)
+                .delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "DocumentSnapshot successfully deleted!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error deleting document", e);
+                    }
+                });
+    }
+    public void updateReservas(ArrayList<String> reservas, String id){
+        Log.d(TAG, "updateUsuario");
+        db.collection("Usuario").document(id)
+                .update(
+                        "reservas", reservas
                 );
     }
 }

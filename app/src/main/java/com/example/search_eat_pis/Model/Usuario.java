@@ -2,6 +2,7 @@ package com.example.search_eat_pis.Model;
 
 import android.util.Log;
 import java.util.ArrayList;
+import com.example.search_eat_pis.Controller.DatabaseAdapter;
 
 public class Usuario {
     private String correo;
