@@ -32,6 +32,10 @@ public class Usuario {
         this.reservas.add(r);
     }
 
+    public void updateUsuario(){
+        adapter.updateReservas(reservas, correo);
+    }
+
     public void deleteReserva(String r){
         this.reservas.remove(r);
     }
