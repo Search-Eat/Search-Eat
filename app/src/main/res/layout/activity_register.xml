@@ -17,7 +17,7 @@
       app:layout_constraintHorizontal_bias="0.5"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:srcCompat="@drawable/Logo_SearchEat" />
+      app:srcCompat="@drawable/logo_searcheat" />
 
   <EditText
       android:id="@+id/editTextNombre_Register"
@@ -84,14 +84,14 @@
       app:layout_constraintTop_toBottomOf="@+id/editTextEmail_Register" />
 
   <Button
-      android:id="@+id/button_Register_Register"
+      android:id="@+id/button_SignUp_Register"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_marginStart="32dp"
       android:layout_marginTop="32dp"
       android:layout_marginEnd="32dp"
       android:background="@drawable/button_rounded"
-      android:text="LogIn"
+      android:text="@string/SignUp"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toStartOf="parent"

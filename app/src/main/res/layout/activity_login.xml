@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/Logo_SearchEat" />
+        app:srcCompat="@drawable/logo_searcheat" />
 
     <EditText
         android:id="@+id/editTextEmail_LogIn"
@@ -57,11 +57,11 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:text="LogIn"
+        android:background="@drawable/button_rounded"
+        android:text="@string/LogIn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassword_LogIn"
-        android:background="@drawable/button_rounded"/>
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword_LogIn" />
 
     <Button
         android:id="@+id/button_Register_LogIn"
@@ -70,10 +70,10 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:text="Register"
+        android:background="@drawable/button_rounded_border"
+        android:text="@string/Register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_LogIn_LogIn"
-        android:background="@drawable/button_rounded_border"/>
+        app:layout_constraintTop_toBottomOf="@+id/button_LogIn_LogIn" />
 </androidx.constraintlayout.widget.ConstraintLayout>

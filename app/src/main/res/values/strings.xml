@@ -20,4 +20,7 @@
     <string name="Password">Password</string>
     <string name="Nombre">Nombre</string>
     <string name="Num_tel">Num_tel</string>
+    <string name="LogIn">LogIn</string>
+    <string name="SignUp">SignUp</string>
+    <string name="Register">Register</string>
 </resources>
