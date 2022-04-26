@@ -58,6 +58,28 @@ public class Local {
 
     public long getPrecio(){return precio;}
 
+    public String getPrecio_medio(){
+
+        if(getPrecio()==-1){
+            return "No disponible";
+        }
+        else if (getPrecio()==1){
+
+            return "€";
+        }
+        else if (getPrecio()==2){
+
+            return "€€";
+        }
+        else if (getPrecio()==3){
+
+            return "€€€";
+        }
+        else{
+            return "€€€€";
+        }
+    }
+
     public void addValoracion(double num){
         double val = valoracion * num_valoraciones;
         this.num_valoraciones++;

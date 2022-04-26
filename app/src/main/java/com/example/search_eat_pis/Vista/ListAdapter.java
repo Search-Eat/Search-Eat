@@ -4,6 +4,7 @@ import com.example.search_eat_pis.R;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,33 +38,29 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     }
     @Override
     public void onBindViewHolder(final ListAdapter.ViewHolder holder, final int position){
-        //holder.binData(mData.get(position));
+        holder.bindData(mData.get(position));
     }
 
     public void setItems(List<Local> items){mData=items;}
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        ImageView iconImage;
-        TextView nombre_rest,t_reserva,direccion,precio;
-        ImageButton mapa,reserva;
-
-
+        //ImageView iconImage;
+        TextView nombre_rest,direccion,distancia,precio;
+        //ImageButton mapa,reserva;
 
         ViewHolder(View itemView){
             super(itemView);
-            iconImage = itemView.findViewById(R.id.imageView3);
             nombre_rest = itemView.findViewById(R.id.Nombre_Restaurante);
-            t_reserva = itemView.findViewById(R.id.t_reserva);
-            direccion = itemView.findViewById(R.id.Direccion);
-            precio = itemView.findViewById(R.id.Precio);
-            mapa = itemView.findViewById(R.id.maps);
-            reserva = itemView.findViewById(R.id.Reserva);
+            direccion = itemView.findViewById(R.id.direccion);
+            distancia = itemView.findViewById(R.id.distancia);
+            precio = itemView.findViewById(R.id.precio);
+
         }
-
         void bindData(final Local item){
-
-            //iconImage.setColorFilter(Color.parseColor(item.getColor()),PortedDuff.Mode);
-
+            nombre_rest.setText(item.getNombre());
+            direccion.setText(item.getDireccion());
+            distancia.setText(item.getDistancia());
+            precio.setText(item.getPrecio_medio());
         }
     }
 
