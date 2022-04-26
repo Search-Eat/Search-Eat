@@ -9,7 +9,7 @@ public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         this.bmImage = bmImage;
     }
 
-    public Bitmap doInBackground(String... urls) {
+    protected Bitmap doInBackground(String... urls) {
         String urldisplay = urls[0];
         Bitmap mIcon11 = null;
         try {
@@ -22,7 +22,7 @@ public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         return mIcon11;
     }
 
-    public void onPostExecute(Bitmap result) {
+    protected void onPostExecute(Bitmap result) {
         bmImage.setImageBitmap(result);
     }
 }
