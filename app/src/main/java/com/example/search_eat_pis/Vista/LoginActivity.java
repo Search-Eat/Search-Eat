@@ -17,7 +17,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     //Metodo LogIn boton
-    public void LogiIn(View view){
+    public void LogIn(View view){
         Intent login_mainmenu = new Intent(this, MainMenu_Navegacion.class);            //Hay que cambiar lo de MainMenu_Navegacion por MainMenu
         startActivity(login_mainmenu);
     }

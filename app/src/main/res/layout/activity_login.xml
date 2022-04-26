@@ -6,10 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/Granate_logo"
+    android:onClick="LogIn"
     tools:context=".Vista.LoginActivity">
 
     <ImageView
-        android:id="@+id/Logo_LogIn"
+        android:id="@+id/logo_Login"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginTop="60dp"
@@ -25,14 +26,14 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
+        android:backgroundTint="@color/Amarillo_logo"
         android:ems="10"
         android:hint="@string/text_view_email"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Logo_LogIn"
-        android:backgroundTint="@color/Amarillo_logo"/>
+        app:layout_constraintTop_toBottomOf="@+id/logo_Login" />
 
     <EditText
         android:id="@+id/editTextPassword_LogIn"
@@ -41,14 +42,14 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
+        android:backgroundTint="@color/Amarillo_logo"
         android:ems="10"
         android:hint="@string/text_view_password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmail_LogIn"
-        android:backgroundTint="@color/Amarillo_logo"/>
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmail_LogIn" />
 
     <Button
         android:id="@+id/button_LogIn_LogIn"
@@ -58,6 +59,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/button_rounded"
+        android:onClick="LogIn"
         android:text="@string/button_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,6 +73,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/button_rounded_border"
+        android:onClick="Register"
         android:text="@string/button_register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

@@ -20,7 +20,14 @@
     <string name="text_view_password">Password</string>
     <string name="text_view_nombre">Nombre</string>
     <string name="text_view_num_tel">Num_tel</string>
+    <string name="text_view_fecha">Fecha Reserva</string>
+    <string name="text_view_numPersonas">Numero Personas</string>
+    <string name="text_view_hora">Hora Reserva</string>
+    <string name="text_view_reservar">Reservar</string>
+    <string name="text_view_nombre_restaurante">Nombre del Restaurante</string>
     <string name="button_login">LogIn</string>
     <string name="button_signup">SignUp</string>
     <string name="button_register">Register</string>
+    <string name="button_fecha">Sel. Fecha</string>
+    <string name="button_hora">Sel. Hora</string>
 </resources>
