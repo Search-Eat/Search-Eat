@@ -1,5 +1,6 @@
 package com.example.search_eat_pis.Controller;
 import com.example.search_eat_pis.Model.Coordenada;
+import com.example.search_eat_pis.Model.Reserva;
 import com.example.search_eat_pis.Model.Sector;
 import com.example.search_eat_pis.Model.Local;
 
@@ -9,6 +10,8 @@ import android.net.Uri;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+
+import com.example.search_eat_pis.Model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -54,8 +57,10 @@ public class DatabaseAdapter extends Activity {
 
     public interface vmInterface {
         void setSector(ArrayList<Sector> s);
-        void setRestaurantes(ArrayList<Local> l);
+        void setLocales(ArrayList<Local> l);
         void setToast(String s);
+        void setReservas(ArrayList<Reserva> r);
+        void setUsuario(Usuario u);
     }
 
     public void initFirebase() {
@@ -108,7 +113,7 @@ public class DatabaseAdapter extends Activity {
                 });
     }
 
-    public void getRestaurantes(ArrayList<String> restaurantes, Coordenada c) {
+    public void getLocales(ArrayList<String> locales, Coordenada c) {
         Log.d(TAG, "updaterestaurantes");
         DatabaseAdapter.db.collection("Locales")
                 .get()
@@ -119,7 +124,7 @@ public class DatabaseAdapter extends Activity {
 
                             ArrayList<Local> retrieved_l = new ArrayList<Local>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                if (restaurantes.contains(document.getId())){
+                                if (locales.contains(document.getId())){
                                     Log.d(TAG, document.getId() + " => " + document.getData());
                                     Local l = new Local( document.getId(),
                                                                 document.getString("dirección"),
@@ -136,7 +141,7 @@ public class DatabaseAdapter extends Activity {
                                 }
 
                             }
-                            listener.setRestaurantes(retrieved_l);
+                            listener.setLocales(retrieved_l);
 
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
@@ -164,22 +169,22 @@ public class DatabaseAdapter extends Activity {
         usuario.put("nombre", nombre);
         usuario.put("teléfono", telefono);
         usuario.put("contraseña", contraseña);
-        usuario.put("reservas", resevas);
+        usuario.put("reservas", reservas);
 
         Log.d(TAG, "saveUsuarios");
         // Add a new document with a generated ID
-        db.collection("Usuarios")
-                .add(usuario)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+        db.collection("Usuarios").document(correo)
+                .set(usuario)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.get("correo");
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "DocumentSnapshot successfully written!");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error adding document", e);
+                        Log.w(TAG, "Error writing document", e);
                     }
                 });
     }
@@ -201,18 +206,18 @@ public class DatabaseAdapter extends Activity {
 
         Log.d(TAG, "saveReserva");
         // Add a new document with a generated ID
-        db.collection("Reserva")
-                .add(reserva)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+        db.collection("Reserva").document(id)
+                .set(reserva)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.get("id");
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "DocumentSnapshot successfully written!");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error adding document", e);
+                        Log.w(TAG, "Error writing document", e);
                     }
                 });
     }
@@ -226,7 +231,7 @@ public class DatabaseAdapter extends Activity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
 
-                            ArrayList<Local> retrieved_r = new ArrayList<Local>();
+                            ArrayList<Reserva> retrieved_r = new ArrayList<Reserva>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 if (reservas.contains(document.getId())){
                                     Log.d(TAG, document.getId() + " => " + document.getData());
@@ -261,23 +266,21 @@ public class DatabaseAdapter extends Activity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
+                            Usuario usuario = null;
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 if (correo.equals(document.getId())){
                                     Log.d(TAG, document.getId() + " => " + document.getData());
                                     if(contraseña.equals(document.getString("contraseña"))){
-                                        Usuario usuario = new Usuario(document.getString("correo"),
+                                        usuario = new Usuario(document.getString("correo"),
                                                 document.getString("nombre"),
                                                 (long)          document.get("telefono"),
                                                 document.getString("contraseña"),
                                                 (ArrayList<String>) document.get("reservas"));
                                     }
-                                    else{
-                                        Usuario usuario = null;
-                                    }
                                 }
 
                             }
-                            listener.setUsuarios(usuario);
+                            listener.setUsuario(usuario);
 
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
