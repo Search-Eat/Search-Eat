@@ -27,6 +27,11 @@ public class ViewModel extends AndroidViewModel implements DatabaseAdapter.vmInt
     public ViewModel(Application application, Coordenada coordenada) {
             super(application);
             this.coordenada = coordenada;
+            mToast = new MutableLiveData<>();
+            mLocales = new MutableLiveData<>();
+            mSector = new MutableLiveData<>();
+            mUsuario = new MutableLiveData<>();
+            mReservas = new MutableLiveData<>();
             da = new DatabaseAdapter(this);
     }
 
