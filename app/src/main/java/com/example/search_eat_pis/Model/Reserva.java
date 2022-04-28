@@ -10,7 +10,7 @@ public class Reserva {
     private String reservaID;
     private String nombre;
     private String restaurante;
-    private long telefono
+    private long telefono;
     private Calendar fecha;
     private long personas;
     private final DatabaseAdapter adapter = DatabaseAdapter.databaseAdapter;
@@ -19,14 +19,12 @@ public class Reserva {
         this.nombre = nombre;
         this.telefono = telefono;
         UUID uuid = UUID.randomUUID();
-        this.reservaId = uuid.toString();
+        this.reservaID = uuid.toString();
         this.restaurante = restaurante;
-        fecha.set(año, dia, mes, hora, minutos);
+        fecha.set((int)año, (int) dia, (int) mes, (int) hora, (int) minuto);
     }
 
-    public String setId(String id) {
-        this.reservaID = id;
-    }
+    public void setId(String id) { this.reservaID = id; }
 
     public void saveReserva() {
         adapter.saveReserva(reservaID, nombre, telefono, restaurante, personas, fecha.get(Calendar.YEAR), fecha.get(Calendar.MONTH), fecha.get(Calendar.DAY_OF_MONTH), fecha.get(Calendar.HOUR_OF_DAY), fecha.get(Calendar.MINUTE));

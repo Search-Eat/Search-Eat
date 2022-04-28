@@ -58,7 +58,7 @@ public class DatabaseAdapter extends Activity {
     public interface vmInterface {
         void setSector(ArrayList<Sector> s);
         void setLocales(ArrayList<Local> l);
-        void setToast(String s);
+        void setToast(String t);
         void setReservas(ArrayList<Reserva> r);
         void setUsuario(Usuario u);
     }
