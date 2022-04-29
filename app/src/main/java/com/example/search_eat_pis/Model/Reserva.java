@@ -9,25 +9,25 @@ import com.example.search_eat_pis.Controller.DatabaseAdapter;
 public class Reserva {
     private String reservaID;
     private String nombre;
-    private String restaurante;
+    private String local;
     private long telefono;
     private Calendar fecha;
     private long personas;
     private final DatabaseAdapter adapter = DatabaseAdapter.databaseAdapter;
 
-    public Reserva(String nombre, long telefono, String restaurante, long personas, long año, long mes, long dia, long hora, long minuto) {
+    public Reserva(String nombre, long telefono, String local, long personas, long año, long mes, long dia, long hora, long minuto) {
         this.nombre = nombre;
         this.telefono = telefono;
         UUID uuid = UUID.randomUUID();
         this.reservaID = uuid.toString();
-        this.restaurante = restaurante;
-        fecha.set((int)año, (int) dia, (int) mes, (int) hora, (int) minuto);
+        this.local = local;
+        fecha.set((int) año, (int) dia, (int) mes, (int) hora, (int) minuto);
     }
 
     public void setId(String id) { this.reservaID = id; }
 
     public void saveReserva() {
-        adapter.saveReserva(reservaID, nombre, telefono, restaurante, personas, fecha.get(Calendar.YEAR), fecha.get(Calendar.MONTH), fecha.get(Calendar.DAY_OF_MONTH), fecha.get(Calendar.HOUR_OF_DAY), fecha.get(Calendar.MINUTE));
+        adapter.saveReserva(reservaID, nombre, telefono, local, personas, fecha.get(Calendar.YEAR), fecha.get(Calendar.MONTH), fecha.get(Calendar.DAY_OF_MONTH), fecha.get(Calendar.HOUR_OF_DAY), fecha.get(Calendar.MINUTE));
     }
 
     public void deleteReserva() {
@@ -42,8 +42,8 @@ public class Reserva {
         return fecha;
     }
 
-    public String getRestaurante() {
-        return restaurante;
+    public String getLocal() {
+        return local;
     }
 
     public boolean valorar() {

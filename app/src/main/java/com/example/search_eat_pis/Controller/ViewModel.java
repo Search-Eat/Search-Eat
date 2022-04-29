@@ -4,6 +4,7 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.search_eat_pis.Model.Coordenada;
@@ -13,6 +14,7 @@ import com.example.search_eat_pis.Model.Sector;
 import com.example.search_eat_pis.Model.Usuario;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Iterator;
 
 public class ViewModel extends AndroidViewModel implements DatabaseAdapter.vmInterface{
@@ -109,13 +111,34 @@ public class ViewModel extends AndroidViewModel implements DatabaseAdapter.vmInt
         mUsuario.setValue(u);
     }
 
-    public Sector getSector(){return mSector.getValue();}
+    public LiveData<Sector> getSector(){return mSector;}
 
-    public ArrayList<Local> getLocales(){return mLocales.getValue();}
+    public LiveData<ArrayList<Local>> getLocales(){return mLocales;}
 
-    public Usuario getUsuario(){return mUsuario.getValue();}
+    public LiveData<Usuario> getUsuario(){return mUsuario;}
 
-    public ArrayList<Reserva> getReservas(){return mReservas.getValue();}
+    public LiveData<ArrayList<Reserva>> getReservas(){return mReservas;}
 
-    public String getToast(){return mToast.getValue();}
+    public LiveData<String> getToast(){return mToast;}
+
+    public Local getLocal(int idx){return mLocales.getValue().get(idx);}
+
+    public Reserva getReserva(int idx){return mReservas.getValue().get(idx);}
+
+    public void addReserva(String nombre, long telefono, String local, long personas, Calendar cal){
+        Reserva reserva = new Reserva(  nombre,
+                                        telefono,
+                                        local,
+                                        personas,
+                                (long)  cal.get(Calendar.YEAR),
+                                (long)  cal.get(Calendar.MONTH),
+                                (long)  cal.get(Calendar.DAY_OF_MONTH),
+                                (long)  cal.get(Calendar.HOUR_OF_DAY),
+                                (long)  cal.get(Calendar.MINUTE));
+        if (reserva != null){
+            mReservas.getValue().add(reserva);
+            mReservas.setValue(mReservas.getValue());
+            reserva.saveReserva();
+        }
+    }
 }
