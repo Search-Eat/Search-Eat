@@ -152,7 +152,7 @@ public class DatabaseAdapter extends Activity {
 
 
 
-    public void updateValoracion(String id, String val, String num_val){
+    public void updateValoracion(String id, double val, long num_val){
         Log.d(TAG, "updateValoracion");
         db.collection("Locales").document(id)
                 .update(
