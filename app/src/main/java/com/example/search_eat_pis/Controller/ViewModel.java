@@ -26,9 +26,8 @@ public class ViewModel extends AndroidViewModel implements DatabaseAdapter.vmInt
     private MutableLiveData<ArrayList<Reserva>> mReservas;
     DatabaseAdapter da;
 
-    public ViewModel(Application application, Coordenada coordenada) {
+    public ViewModel(Application application) {
             super(application);
-            this.coordenada = coordenada;
             mToast = new MutableLiveData<>();
             mLocales = new MutableLiveData<>();
             mSector = new MutableLiveData<>();
@@ -37,6 +36,7 @@ public class ViewModel extends AndroidViewModel implements DatabaseAdapter.vmInt
             da = new DatabaseAdapter(this);
     }
 
+    public void setCoordenada(Coordenada coordenada){ this.coordenada = coordenada;}
 
     public void iniSector(){
         da.getSectores();
@@ -110,6 +110,7 @@ public class ViewModel extends AndroidViewModel implements DatabaseAdapter.vmInt
     public void setUsuario(Usuario u) {
         mUsuario.setValue(u);
     }
+
 
     public LiveData<Sector> getSector(){return mSector;}
 
