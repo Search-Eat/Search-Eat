@@ -43,6 +43,10 @@
             android:name=".Vista.MainMenu_Navegacion"
             android:exported="false"
             android:label="@string/title_activity_main_menu_navegacion" />
+
+        <activity
+            android:name=".Vista.Menu_PrincipalActivity"
+            android:exported="true"/>
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 

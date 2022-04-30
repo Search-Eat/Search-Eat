@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="icons">
+        <item>@drawable/ic_baseline_person_24</item>
+        <item>@drawable/ic_baseline_restaurant_24</item>
+        <item>@drawable/ic_baseline_local_cafe_24</item>
+        <item>@drawable/ic_sports_bar_black_24dp</item>
+        <item>@drawable/ic_baseline_info_24</item>
+    </array>
+
+    <array name="colors">
+        <item>#5c2a2a</item>
+        <item>@android:color/holo_green_dark</item>
+        <item>@android:color/holo_red_dark</item>
+        <item>@android:color/holo_purple</item>
+        <item>@android:color/holo_orange_light</item>
+
+    </array>
+
+
+</resources>

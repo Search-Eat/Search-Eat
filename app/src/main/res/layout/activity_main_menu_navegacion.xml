@@ -138,6 +138,7 @@
         app:layout_constraintVertical_bias="0.698">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/lista_cards_restaurantes"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>
