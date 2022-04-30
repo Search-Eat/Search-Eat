@@ -121,7 +121,7 @@ public class MainMenu_Navegacion extends AppCompatActivity implements DatabaseAd
 
     @Override
     public void setRestaurantes(ArrayList<Local> l) {
-
+        System.out.println(asd);
     }
 
     @Override
