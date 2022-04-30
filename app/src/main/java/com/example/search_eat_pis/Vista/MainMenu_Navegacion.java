@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class MainMenu_Navegacion extends AppCompatActivity implements DatabaseAdapter.vmInterface {
+public class MainMenu_Navegacion extends AppCompatActivity{
     private ActivityMainMenuNavegacionBinding binding;
     private List<Local> elements;
     private Sector sectores;
@@ -105,28 +105,4 @@ public class MainMenu_Navegacion extends AppCompatActivity implements DatabaseAd
         }
     }
 
-
-    @Override
-    public void setSector(ArrayList<Sector> s) {
-        double dist = Float.POSITIVE_INFINITY;
-        Iterator it = s.iterator();
-        while(it.hasNext()){
-            Sector sec = (Sector) it.next();
-            if (dist > cordenada.distancia(sec.getCoordenada())){
-                sectores = sec;
-                dist = cordenada.distancia(sec.getCoordenada());
-            }
-        }
-    }
-
-    @Override
-    public void setRestaurantes(ArrayList<Local> l) {
-        System.out.println(asd);
-    }
-
-    @Override
-    public void setToast(String s) {
-
-
-    }
 }

@@ -305,7 +305,7 @@ public class DatabaseAdapter extends Activity {
                                     b = true;
                                 }
                             }
-                            if (b = false){
+                            if (b == false){
                                 listener.setBoolean(true);
                             }
 
