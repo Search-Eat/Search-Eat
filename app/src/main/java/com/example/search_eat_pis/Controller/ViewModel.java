@@ -92,6 +92,7 @@ public class ViewModel extends AndroidViewModel implements DatabaseAdapter.vmInt
             mSector.setValue(sector);
         }
     }
+    public void isValidCorreo(String correo){ da.isValidCorreo(correo);}
 
     @Override
     public void setLocales(ArrayList<Local> l) {
