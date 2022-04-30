@@ -58,7 +58,7 @@ public class DatabaseAdapter extends Activity {
     public interface vmInterface {
         void setSector(ArrayList<Sector> s);
         void setLocales(ArrayList<Local> l);
-        void setToast(String s);
+        void setToast(String t);
         void setReservas(ArrayList<Reserva> r);
         void setUsuario(Usuario u);
     }
@@ -152,7 +152,7 @@ public class DatabaseAdapter extends Activity {
 
 
 
-    public void updateValoracion(String id, String val, String num_val){
+    public void updateValoracion(String id, double val, long num_val){
         Log.d(TAG, "updateValoracion");
         db.collection("Locales").document(id)
                 .update(
@@ -189,14 +189,14 @@ public class DatabaseAdapter extends Activity {
                 });
     }
 
-    public void saveReserva (String id, String nombre, long telefono, String restaurante, long personas, long año, long dia, long mes, long hora, long minuto) {
+    public void saveReserva (String id, String nombre, long telefono, String local, long personas, long año, long dia, long mes, long hora, long minuto) {
 
         // Create a new user with a first and last name
         Map<String, Object> reserva = new HashMap<>();
         reserva.put("id", id);
         reserva.put("nombre", nombre);
         reserva.put("telefono", telefono);
-        reserva.put("restaurante", restaurante);
+        reserva.put("local", local);
         reserva.put("personas", personas);
         reserva.put("año", año);
         reserva.put("dia", dia);
@@ -237,7 +237,7 @@ public class DatabaseAdapter extends Activity {
                                     Log.d(TAG, document.getId() + " => " + document.getData());
                                     Reserva r = new Reserva(document.getString("nombre"),
                                             (long)          document.get("telefono"),
-                                                            document.getString("restaurantes"),
+                                                            document.getString("local"),
                                             (long)          document.get("personas"),
                                             (long)          document.get("año"),
                                             (long)          document.get("mes"),
