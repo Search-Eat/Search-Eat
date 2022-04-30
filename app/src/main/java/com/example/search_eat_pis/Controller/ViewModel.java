@@ -24,10 +24,12 @@ public class ViewModel extends AndroidViewModel implements DatabaseAdapter.vmInt
     private MutableLiveData<Sector> mSector;
     private MutableLiveData<Usuario> mUsuario;
     private MutableLiveData<ArrayList<Reserva>> mReservas;
+    private MutableLiveData<Boolean> mBoolean;
     DatabaseAdapter da;
 
     public ViewModel(Application application) {
             super(application);
+            mBoolean = new MutableLiveData<>();
             mToast = new MutableLiveData<>();
             mLocales = new MutableLiveData<>();
             mSector = new MutableLiveData<>();
@@ -111,6 +113,9 @@ public class ViewModel extends AndroidViewModel implements DatabaseAdapter.vmInt
         mUsuario.setValue(u);
     }
 
+    @Override
+    public void setBoolean(boolean b) {mBoolean.setValue(b);}
+
 
     public LiveData<Sector> getSector(){return mSector;}
 
@@ -121,6 +126,8 @@ public class ViewModel extends AndroidViewModel implements DatabaseAdapter.vmInt
     public LiveData<ArrayList<Reserva>> getReservas(){return mReservas;}
 
     public LiveData<String> getToast(){return mToast;}
+
+    public LiveData<Boolean> getBoolean(){return mBoolean;}
 
     public Local getLocal(int idx){return mLocales.getValue().get(idx);}
 

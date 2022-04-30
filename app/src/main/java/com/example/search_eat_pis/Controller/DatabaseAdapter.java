@@ -61,6 +61,7 @@ public class DatabaseAdapter extends Activity {
         void setToast(String t);
         void setReservas(ArrayList<Reserva> r);
         void setUsuario(Usuario u);
+        void setBoolean(boolean b);
     }
 
     public void initFirebase() {
@@ -281,6 +282,32 @@ public class DatabaseAdapter extends Activity {
 
                             }
                             listener.setUsuario(usuario);
+
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+    }
+
+    public void getUsuario(String correo){
+        Log.d(TAG, "getUsuario");
+        DatabaseAdapter.db.collection("Usuarios")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            boolean b = false;
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                if (correo.equals(document.getId())){
+                                    listener.setBoolean(false);
+                                    b = true;
+                                }
+                            }
+                            if (b = false){
+                                listener.setBoolean(true);
+                            }
 
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
