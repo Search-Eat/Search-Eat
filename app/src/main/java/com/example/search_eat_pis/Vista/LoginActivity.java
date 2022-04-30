@@ -7,24 +7,38 @@ import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.search_eat_pis.Controller.ViewModel;
+import com.example.search_eat_pis.Model.Usuario;
 import com.example.search_eat_pis.R;
 
 import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private ViewModel viewModel;
+    private EditText editTextEmail_LogIn;
+    private EditText editTextPassword_LogIn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        setLiveDataObservers();
+        editTextEmail_LogIn = findViewById(R.id.editTextEmail_LogIn);
+        editTextPassword_LogIn = findViewById(R.id.editTextPassword_LogIn);
+    }
+
+    public void changeActivityFromLoginToMainmenu(){
+        Intent login_mainmenu = new Intent(this, MainMenu_Navegacion.class);            //Hay que cambiar lo de MainMenu_Navegacion por MainMenu
+        startActivity(login_mainmenu);
     }
 
     //Metodo LogIn boton
     public void LogIn(View view){
-        Intent login_mainmenu = new Intent(this, MainMenu_Navegacion.class);            //Hay que cambiar lo de MainMenu_Navegacion por MainMenu
-        startActivity(login_mainmenu);
+        viewModel.iniUsuario(editTextEmail_LogIn.getText().toString(), editTextPassword_LogIn.getText().toString());
     }
 
     //Metodo Register boton
@@ -35,34 +49,28 @@ public class LoginActivity extends AppCompatActivity {
 
     public void setLiveDataObservers() {
         //Subscribe the activity to the observable
-        viewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
-        viewModel.setCoordenada(coordenada);
+        viewModel = new ViewModelProvider(this).get(ViewModel.class);
 
-        final Observer<Sector> observerSector = new Observer<Sector>() {
+        final Observer<Usuario> observerUsuario = new Observer<Usuario>() {
             @Override
-            public void onChanged(Sector s) {
-                viewModel.iniLocal("restaurantes");
+            public void onChanged(Usuario u) {
+                if (viewModel.getUsuario().getValue().equals(null)){
+                    Toast.makeText(LoginActivity.this, "El usuario o la contraseña son incorrectos", Toast.LENGTH_SHORT).show();
+                } else{
+                    changeActivityFromLoginToMainmenu();
+                }
+
             }
         };
 
-        final Observer<ArrayList<Local>> observer = new Observer<ArrayList<Local>>() {
-            @Override
-            public void onChanged(ArrayList<Local> l) {
-                CustomAdapter newAdapter = new CustomAdapter(parentContext, l, (CustomAdapter.playerInterface) mActivity);
-                mRecyclerView.swapAdapter(newAdapter, false);
-                newAdapter.notifyDataSetChanged();
-            }
-        };
         final Observer<String> observerToast = new Observer<String>() {
             @Override
             public void onChanged(String t) {
-                Toast.makeText(parentContext, t, Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, t, Toast.LENGTH_SHORT).show();
             }
         };
-        viewModel.getSector().observe(this,observerSector);
-        viewModel.getLocales().observe(this, observer);
-        viewModel.getToast().observe(this, observerToast);
 
-        viewModel.iniSector();
+        viewModel.getToast().observe(this, observerToast);
+        viewModel.getUsuario().observe(this, observerUsuario);
     }
 }
