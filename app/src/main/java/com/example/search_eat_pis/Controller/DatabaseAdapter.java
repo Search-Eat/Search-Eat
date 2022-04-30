@@ -291,6 +291,7 @@ public class DatabaseAdapter extends Activity {
     }
 
     public void isValidCorreo(String correo){
+        a
         Log.d(TAG, "getUsuario");
         DatabaseAdapter.db.collection("Usuarios")
                 .get()
