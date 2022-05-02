@@ -45,7 +45,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         //ImageView iconImage;
-        TextView nombre_rest,direccion,distancia,precio;
+        TextView nombre_rest,direccion,distancia,precio,puntuacion;
         //ImageButton mapa,reserva;
 
         ViewHolder(View itemView){
@@ -54,13 +54,15 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             direccion = itemView.findViewById(R.id.direccion);
             distancia = itemView.findViewById(R.id.distancia);
             precio = itemView.findViewById(R.id.precio);
+            puntuacion = itemView.findViewById(R.id.puntacion);
 
         }
         void bindData(final Local item){
             nombre_rest.setText(item.getNombre());
-            direccion.setText(item.getDireccion());
-            distancia.setText(item.getDistancia());
-            precio.setText(item.getPrecio_medio());
+            direccion.setText(" Dirección: "+item.getDireccion());
+            distancia.setText(" Distancia: "+item.getDistancia());
+            precio.setText(" Precio: "+item.getPrecio_medio());
+            precio.setText("Puntuación: "+item.getValoracion());
         }
     }
 

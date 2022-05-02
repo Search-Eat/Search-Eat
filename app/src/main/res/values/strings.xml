@@ -30,4 +30,12 @@
     <string name="button_register">Register</string>
     <string name="button_fecha">Sel. Fecha</string>
     <string name="button_hora">Sel. Hora</string>
+    <string name="distancia">Distancia: </string>
+    <string name="precio">Precio: </string>
+    <string name="direccion">Dirección: </string>
+    <string name="puntuacion">Puntuacion: </string>
+    <string name="nombre_restaurante"></string>
+    <string name="imagen_del_restaurante"></string>
+
+
 </resources>

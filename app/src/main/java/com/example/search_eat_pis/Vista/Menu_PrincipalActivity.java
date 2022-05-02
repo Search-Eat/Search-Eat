@@ -33,7 +33,7 @@ public class Menu_PrincipalActivity extends AppCompatActivity {
                 switch(buttonIndex){
                     case 0:
                         Toast.makeText(Menu_PrincipalActivity.this, "Botón de perfil ", Toast.LENGTH_SHORT).show();
-                        perfil(view);
+                        //perfil(view);
                         break;
                     case 1:
                         Toast.makeText(Menu_PrincipalActivity.this, "Botón de restaurantes ", Toast.LENGTH_SHORT).show();
@@ -49,7 +49,7 @@ public class Menu_PrincipalActivity extends AppCompatActivity {
                         break;
                     case 4:
                         Toast.makeText(Menu_PrincipalActivity.this, "acerca del programa ", Toast.LENGTH_SHORT).show();
-                        informacion(view);
+                        //informacion(view);
                         break;
 
 
@@ -61,10 +61,10 @@ public class Menu_PrincipalActivity extends AppCompatActivity {
 
 
     }
-    public void perfil(View view){
+   /* public void perfil(View view){
         Intent perfil = new Intent(this, Perfil.class);
         startActivity(perfil);
-    }
+    }*/
 
     public void restaurantes(View view){
         Intent rest = new Intent(this, MainMenu_Navegacion.class);
@@ -81,8 +81,8 @@ public class Menu_PrincipalActivity extends AppCompatActivity {
         bar.putExtra("boton","bares");
         startActivity(bar);
     }
-    public void informacion(View view){
+    /*public void informacion(View view){
         Intent info = new Intent(this, Informacion.class);
         startActivity(info);
-    }
+    }*/
 }

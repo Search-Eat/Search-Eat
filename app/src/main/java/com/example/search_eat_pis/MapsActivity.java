@@ -1,5 +1,6 @@
 package com.example.search_eat_pis;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 
 import android.os.Bundle;
@@ -49,5 +50,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(posicion).title("Tú ubicación"));
         mMap.addMarker(new MarkerOptions().position(local).title(nombre));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(posicion));
+    }
+
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap) {
+
     }
 }
