@@ -148,6 +148,8 @@ public class ViewModel extends AndroidViewModel implements DatabaseAdapter.vmInt
             mReservas.getValue().add(reserva);
             mReservas.setValue(mReservas.getValue());
             reserva.saveReserva();
+            mUsuario.getValue().addReserva(reserva.getId());
+            mUsuario.getValue().updateUsuarioReserva();
         }
     }
 }
