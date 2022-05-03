@@ -42,9 +42,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * installed Google Play services and returned to the app.
      */
 
-    public void onMapReady(GoogleMap googleMap, double pos_lat, double pos_lon, double loc_lat, double loc_lon, String nombre) {
-
-    }
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
