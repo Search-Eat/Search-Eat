@@ -36,11 +36,10 @@ import java.util.List;
 
 public class MainMenu_Navegacion extends AppCompatActivity{
     private ActivityMainMenuNavegacionBinding binding;
-    private List<Local> elements;
     private Sector sectores;
     private LocationManager locManager;
     private Location loc;
-    private Coordenada cordenada;
+    static public Coordenada cordenada;
     private ViewModel viewModel;
 
 
@@ -48,14 +47,11 @@ public class MainMenu_Navegacion extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu_navegacion);
-        setLiveDataObservers();
         ultima_ubicación();
-        initialize_elements();
-        init();
-
+        setLiveDataObservers();
     }
 
-    public void init(){
+    public void init(ArrayList<Local> elements){
     ListAdapter listAdapter = new ListAdapter(elements,this);
         RecyclerView recyclerView = findViewById(R.id.lista_cards_restaurantes);
         recyclerView.setHasFixedSize(true);
@@ -68,38 +64,7 @@ public class MainMenu_Navegacion extends AppCompatActivity{
     Aquí vemos que botón ha apretado el usuario (bar,cafeteria, restaurante), y escogemos el tipo de
     local más cercano al usuario llamando a los diferentes métodos que tendra DataBaseAdapter.
     */
-    public void initialize_elements(){
 
-        elements = new ArrayList<>(); //limpiamos toda la lista
-
-        if(getIntent().getExtras()==null){
-            elements = null;
-        }
-        else{
-            if(getIntent().getStringExtra("boton").equals("restaurante")){
-
-                // base de datos con lista de restaurantes cercanos;
-                // elements = new ArrayList<>(funcion);
-
-            }
-            else if(getIntent().getStringExtra("boton").equals("cafe")){
-
-                // base de datos con lista de cafeterias cercanas;
-                // elements = new ArrayList<>(funcion);
-            }
-            else if(getIntent().getStringExtra("boton").equals("bares")){
-
-                // base de datos con lista de bares cercanos;
-                // elements = new ArrayList<>(funcion);
-
-
-            }
-            else{
-                elements = null;
-            }
-        }
-
-    }
 
     public void ultima_ubicación(){
 
@@ -110,23 +75,26 @@ public class MainMenu_Navegacion extends AppCompatActivity{
             Location loc = locManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             double latitud = loc.getLatitude();
             double longitud = loc.getLongitude();
-            this.cordenada = new Coordenada(latitud,longitud);
+            cordenada = new Coordenada(latitud,longitud);
         }
     }
 
     public void setLiveDataObservers() {
         //Subscribe the activity to the observable
         viewModel = new ViewModelProvider(this).get(ViewModel.class);
+        viewModel.setCoordenada(cordenada);
 
-        final Observer<Local> observerLocal = new Observer<Local>() {
+        final Observer<Sector> observerSector = new Observer<Sector>() {
             @Override
-            public void onChanged(Local l) {
-                ArrayList<Local> locales = viewModel.getLocales().getValue();
-                for(Local it : locales){
-                    if(it.getEtiquetas().get(0).equals(getIntent().getStringExtra("boton"))){
-                        elements.add(it);
-                    }
-                }
+            public void onChanged(Sector sector) {
+                viewModel.iniLocal(getIntent().getStringExtra("boton"));
+            }
+        };
+
+        final Observer< ArrayList<Local>> observerLocal = new Observer< ArrayList<Local>>() {
+            @Override
+            public void onChanged( ArrayList<Local> l) {
+                init(l);
             }
         };
 
@@ -137,6 +105,8 @@ public class MainMenu_Navegacion extends AppCompatActivity{
             }
         };
         viewModel.getToast().observe(this, observerToast);
+        viewModel.getSector().observe(this, observerSector);
+        viewModel.getLocales().observe(this, observerLocal);
     }
 
 

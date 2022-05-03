@@ -3,13 +3,11 @@ import com.example.search_eat_pis.Model.Local;
 import com.example.search_eat_pis.R;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,11 +32,32 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     @Override
     public ListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         View view = mInflater.inflate(R.layout.list_element, null);
+
+
         return new ListAdapter.ViewHolder(view);
+
     }
     @Override
-    public void onBindViewHolder(final ListAdapter.ViewHolder holder, final int position){
+    public void onBindViewHolder(final ListAdapter.ViewHolder holder,  final int position){
         holder.bindData(mData.get(position));
+         holder.getMapa().setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 Intent register = new Intent(context, RegisterActivity.class);
+                 register.putExtra("latitud",mData.get(position).getCoordenada().getLatitud());
+                 register.putExtra("longitud",mData.get(position).getCoordenada().getLongitud());
+                 context.startActivity(register);
+             }
+         });
+
+         holder.getReserva().setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 Intent register = new Intent(context, RegisterActivity.class);
+                 register.putExtra("boton",holder.getNombre_rest().toString());
+                 context.startActivity(register);
+             }
+         });
     }
 
     public void setItems(List<Local> items){mData=items;}
@@ -46,7 +65,31 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder{
         //ImageView iconImage;
         TextView nombre_rest,direccion,distancia,precio,puntuacion;
-        //ImageButton mapa,reserva;
+        ImageButton mapa,reserva;
+
+        public TextView getNombre_rest() {
+            return nombre_rest;
+        }
+
+        public TextView getDistancia() {
+            return distancia;
+        }
+
+        public TextView getPrecio() {
+            return precio;
+        }
+
+        public TextView getPuntuacion() {
+            return puntuacion;
+        }
+
+        public ImageButton getMapa() {
+            return mapa;
+        }
+
+        public ImageButton getReserva() {
+            return reserva;
+        }
 
         ViewHolder(View itemView){
             super(itemView);
@@ -55,6 +98,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             distancia = itemView.findViewById(R.id.distancia);
             precio = itemView.findViewById(R.id.precio);
             puntuacion = itemView.findViewById(R.id.puntacion);
+            mapa = itemView.findViewById(R.id.maps);
+            reserva = itemView.findViewById(R.id.reserva);
 
         }
         void bindData(final Local item){
@@ -64,6 +109,13 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             precio.setText(" Precio: "+item.getPrecio_medio());
             precio.setText("Puntuación: "+item.getValoracion());
         }
+
+
     }
+
+public void register(View view){
+
+
+}
 
 }
