@@ -1,9 +1,11 @@
 package com.example.search_eat_pis;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 
 import android.os.Bundle;
 
+import com.example.search_eat_pis.Vista.MainMenu_Navegacion;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -40,14 +42,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * installed Google Play services and returned to the app.
      */
 
-    public void onMapReady(GoogleMap googleMap, double pos_lat, double pos_lon, double loc_lat, double loc_lon, String nombre) {
-        mMap = googleMap;
 
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap) {
+        mMap = googleMap;
+        double loc_lat = 0;
+        double loc_lon = 0;
+        double pos_lat = MainMenu_Navegacion.cordenada.getLatitud();
+        double pos_lon = MainMenu_Navegacion.cordenada.getLongitud();
+        getIntent().getDoubleExtra("latitud",loc_lat);
+        getIntent().getDoubleExtra("longitud",loc_lon);
         // Add a marker in Sydney and move the camera
-        LatLng posicion = new LatLng(pos_lat, pos_lon);
-        LatLng local = new LatLng(loc_lat, loc_lon);
-        mMap.addMarker(new MarkerOptions().position(posicion).title("Tú ubicación"));
-        mMap.addMarker(new MarkerOptions().position(local).title(nombre));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(posicion));
+        if(loc_lat != 0 && loc_lon != 0){
+            LatLng posicion = new LatLng(pos_lat, pos_lon);
+            LatLng local = new LatLng(loc_lat, loc_lon);
+            mMap.addMarker(new MarkerOptions().position(posicion).title("Tú ubicación"));
+            mMap.addMarker(new MarkerOptions().position(local).title(getIntent().getStringExtra("nombre")));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(posicion));
+        }
     }
 }

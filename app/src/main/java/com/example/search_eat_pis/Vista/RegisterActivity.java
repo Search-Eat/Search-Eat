@@ -62,7 +62,6 @@ public class RegisterActivity extends AppCompatActivity {
                     usuario.saveUsuario();
                     changeActivity();
                 }
-
             }
         };
 

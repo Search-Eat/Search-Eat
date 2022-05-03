@@ -97,40 +97,12 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="173dp"
-        android:layout_height="53dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.932"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.974">
-
-        <Space
-            android:layout_width="118dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/Back"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:contentDescription=" "
-            app:icon="@android:drawable/ic_menu_revert" />
-
-    </LinearLayout>
-
-    <LinearLayout
         android:id="@+id/Locales"
-        android:layout_width="407dp"
-        android:layout_height="429dp"
+        android:layout_width="398dp"
+        android:layout_height="478dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@+id/nav_view"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/nav_host_fragment_activity_main_menu_navegacion"
@@ -139,8 +111,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/lista_cards_restaurantes"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_width="412dp"
+            android:layout_height="536dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -90,4 +90,7 @@ public class Local {
         adapter.updateValoracion(iD,valoracion,num_valoraciones);
     }
 
+    public Coordenada getCoordenada() {
+        return coordenada;
+    }
 }
