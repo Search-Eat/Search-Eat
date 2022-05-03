@@ -82,7 +82,7 @@ public class Menu_PrincipalActivity extends AppCompatActivity {
         startActivity(bar);
     }
     public void informacion(View view){
-        Intent info = new Intent(this, Informacion.class);
+        Intent info = new Intent(this, InformacionActivity.class);
         startActivity(info);
     }
 }

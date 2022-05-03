@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         editTextPassword_LogIn = findViewById(R.id.editTextPassword_LogIn);
     }
 
-    public void changeActivityFromLoginToMainmenu(){
+    public void changeActivity(){
         Intent login_mainmenu = new Intent(this, MainMenu_Navegacion.class);            //Hay que cambiar lo de MainMenu_Navegacion por MainMenu
         startActivity(login_mainmenu);
     }
@@ -57,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (viewModel.getUsuario().getValue().equals(null)){
                     Toast.makeText(LoginActivity.this, "El usuario o la contraseña son incorrectos", Toast.LENGTH_SHORT).show();
                 } else{
-                    changeActivityFromLoginToMainmenu();
+                    changeActivity();
                 }
 
             }

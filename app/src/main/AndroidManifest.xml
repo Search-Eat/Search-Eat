@@ -13,6 +13,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Search_Eat_PIS">
         <activity
+            android:name=".Vista.InformacionActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".Vista.ReservaActivity"
             android:exported="true">
             <intent-filter>
@@ -43,10 +52,9 @@
             android:name=".Vista.MainMenu_Navegacion"
             android:exported="false"
             android:label="@string/title_activity_main_menu_navegacion" />
-
         <activity
             android:name=".Vista.Menu_PrincipalActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 

@@ -8,7 +8,7 @@
     <string name="ordenar">Ordenar</string>
     <string name="abierto">Abierto</string>
     <string name="imagen_de_reserva">imagen de reserva</string>
-    <string name="iamgen_restaurante">iamgen restaurante</string>
+    <string name="imagen_restaurante">iamgen restaurante</string>
     <string name="reserva">Reserva:</string>
     <string name="boton_para_puntuar1">boton para puntuar</string>
     <string name="boton_para_puntuar2">boton para puntuar</string>
@@ -30,4 +30,11 @@
     <string name="button_register">Register</string>
     <string name="button_fecha">Sel. Fecha</string>
     <string name="button_hora">Sel. Hora</string>
+    <string name="creadores">Creadores</string>
+    <string name="carlos">Carlos Gomez Dominguez</string>
+    <string name="ronald">Ronald Ortiz de Lazcano Casal</string>
+    <string name="diego">Diego Gelinck Rodriguez</string>
+    <string name="matt">Matthew Ayete Corrales</string>
+    <string name="version_java">Version Java</string>
+    <string name="num_version">Java VERSION_1_8</string>
 </resources>

@@ -11,6 +11,8 @@ public class Usuario {
     private String contraseña;
     private ArrayList<String> reservas;
     private final DatabaseAdapter adapter = DatabaseAdapter.databaseAdapter;
+    static public Usuario usuario_actual;
+
 
     public Usuario(String correo, String nombre, long telefono, String contraseña, ArrayList<String> reservas){
         this.correo = correo;
@@ -18,6 +20,7 @@ public class Usuario {
         this.telefono = telefono;
         this.contraseña = contraseña;
         this.reservas = reservas;
+        usuario_actual = this;
     }
 
     public ArrayList<String> getReservas(){return reservas;}
