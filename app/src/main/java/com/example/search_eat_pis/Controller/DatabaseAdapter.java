@@ -274,8 +274,7 @@ public class DatabaseAdapter extends Activity {
                                     if(contraseña.equals(document.getString("contraseña"))){
                                         usuario = new Usuario(document.getString("correo"),
                                                 document.getString("nombre"),
-                                                (long)              document.getLong("telefono"),
-                                                //(long)          document.get("telefono"),
+                                                (long)              document.get("teléfono"),
                                                 document.getString("contraseña"),
                                                 (ArrayList<String>) document.get("reservas"));
                                     }

@@ -49,6 +49,7 @@ public class MainMenu_Navegacion extends AppCompatActivity{
         setContentView(R.layout.activity_main_menu_navegacion);
         ultima_ubicación();
         setLiveDataObservers();
+        viewModel.iniSector();
     }
 
     public void init(ArrayList<Local> elements){

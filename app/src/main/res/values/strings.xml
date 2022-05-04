@@ -43,5 +43,4 @@
     <string name="direccion"></string>
     <string name="precio"></string>
     <string name="distancia"></string>
-    <string name="hola"/>
 </resources>

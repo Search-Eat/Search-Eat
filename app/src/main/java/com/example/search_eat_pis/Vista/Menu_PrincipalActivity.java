@@ -68,12 +68,12 @@ public class Menu_PrincipalActivity extends AppCompatActivity {
 
     public void restaurantes(View view){
         Intent rest = new Intent(this, MainMenu_Navegacion.class);
-        rest.putExtra("boton","restaurante");
+        rest.putExtra("boton","restaurantes");
         startActivity(rest);
     }
     public void cafeteria (View view){
         Intent cafe = new Intent(this, MainMenu_Navegacion.class);
-        cafe.putExtra("boton","cafe");
+        cafe.putExtra("boton","cafes");
         startActivity(cafe);
     }
     public void bares(View view){
