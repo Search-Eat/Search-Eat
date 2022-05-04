@@ -62,7 +62,7 @@ public class Menu_PrincipalActivity extends AppCompatActivity {
 
     }
     public void perfil(View view){
-        Intent perfil = new Intent(this, Perfil.class);
+        Intent perfil = new Intent(this, InformacionActivity.class);
         startActivity(perfil);
     }
 

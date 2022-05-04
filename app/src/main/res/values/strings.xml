@@ -37,4 +37,10 @@
     <string name="matt">Matthew Ayete Corrales</string>
     <string name="version_java">Version Java</string>
     <string name="num_version">Java VERSION_1_8</string>
+    <string name="imagen_del_restaurante"></string>
+    <string name="nombre_restaurante"></string>
+    <string name="puntuacion"></string>
+    <string name="direccion"></string>
+    <string name="precio"></string>
+    <string name="distancia"></string>
 </resources>

@@ -2,6 +2,7 @@ package com.example.search_eat_pis.Vista;
 import com.example.search_eat_pis.Model.Local;
 import com.example.search_eat_pis.R;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -38,7 +39,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
     }
     @Override
-    public void onBindViewHolder(final ListAdapter.ViewHolder holder,  final int position){
+    public void onBindViewHolder(final ListAdapter.ViewHolder holder, @SuppressLint("RecyclerView") final int position){
         holder.bindData(mData.get(position));
          holder.getMapa().setOnClickListener(new View.OnClickListener() {
              @Override
