@@ -39,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     //Metodo LogIn boton
     public void LogIn(View view){
         viewModel.iniUsuario(editTextEmail_LogIn.getText().toString(), editTextPassword_LogIn.getText().toString());
+
     }
 
     //Metodo Register boton
