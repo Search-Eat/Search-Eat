@@ -1,4 +1,5 @@
 package com.example.search_eat_pis.Vista;
+import com.example.search_eat_pis.MapsActivity;
 import com.example.search_eat_pis.Model.Local;
 import com.example.search_eat_pis.R;
 
@@ -44,7 +45,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
          holder.getMapa().setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
-                 Intent register = new Intent(context, RegisterActivity.class);
+                 Intent register = new Intent(context, MapsActivity.class);
                  register.putExtra("latitud",mData.get(position).getCoordenada().getLatitud());
                  register.putExtra("longitud",mData.get(position).getCoordenada().getLongitud());
                  context.startActivity(register);
@@ -54,7 +55,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
          holder.getReserva().setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
-                 Intent register = new Intent(context, RegisterActivity.class);
+                 Intent register = new Intent(context, ReservaActivity.class);
                  register.putExtra("boton",holder.getNombre_rest().toString());
                  context.startActivity(register);
              }
