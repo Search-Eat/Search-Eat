@@ -46,8 +46,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
              @Override
              public void onClick(View view) {
                  Intent register = new Intent(context, MapsActivity.class);
-                 register.putExtra("latitud",mData.get(position).getCoordenada().getLatitud());
-                 register.putExtra("longitud",mData.get(position).getCoordenada().getLongitud());
+                 register.putExtra("latitud",Double.toString(mData.get(position).getCoordenada().getLatitud()));
+                 register.putExtra("longitud",Double.toString(mData.get(position).getCoordenada().getLongitud()));
+                 register.putExtra("nombre", mData.get(position).getNombre());
                  context.startActivity(register);
              }
          });

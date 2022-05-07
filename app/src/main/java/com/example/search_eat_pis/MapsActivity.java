@@ -22,9 +22,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        binding = ActivityMapsBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        setContentView(R.layout.activity_maps);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -46,19 +44,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         mMap = googleMap;
-        double loc_lat = 0;
-        double loc_lon = 0;
+        double loc_lat = Double.parseDouble(getIntent().getStringExtra("latitud"));
+        double loc_lon = Double.parseDouble(getIntent().getStringExtra("longitud"));
         double pos_lat = MainMenu_Navegacion.cordenada.getLatitud();
         double pos_lon = MainMenu_Navegacion.cordenada.getLongitud();
-        getIntent().getDoubleExtra("latitud",loc_lat);
-        getIntent().getDoubleExtra("longitud",loc_lon);
-        // Add a marker in Sydney and move the camera
-        if(loc_lat != 0 && loc_lon != 0){
-            LatLng posicion = new LatLng(pos_lat, pos_lon);
-            LatLng local = new LatLng(loc_lat, loc_lon);
-            mMap.addMarker(new MarkerOptions().position(posicion).title("Tú ubicación"));
-            mMap.addMarker(new MarkerOptions().position(local).title(getIntent().getStringExtra("nombre")));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(posicion));
-        }
+        LatLng posicion = new LatLng(pos_lat, pos_lon);
+        LatLng local = new LatLng(loc_lat, loc_lon);
+        mMap.addMarker(new MarkerOptions().position(posicion).title("Tú ubicación"));
+        mMap.addMarker(new MarkerOptions().position(local).title(getIntent().getStringExtra("nombre")));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(posicion,15));
     }
 }
