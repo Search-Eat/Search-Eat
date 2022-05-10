@@ -2,6 +2,7 @@ package com.example.search_eat_pis.Vista;
 import com.example.search_eat_pis.MapsActivity;
 import com.example.search_eat_pis.Model.Local;
 import com.example.search_eat_pis.R;
+import com.squareup.picasso.Picasso;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -66,7 +68,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     public void setItems(List<Local> items){mData=items;}
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        //ImageView iconImage;
+        ImageView iconImage;
         TextView nombre_rest,direccion,distancia,precio,puntuacion;
         ImageButton mapa,reserva;
 
@@ -96,6 +98,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
         ViewHolder(View itemView){
             super(itemView);
+            iconImage = itemView.findViewById(R.id.imageView3);
             nombre_rest = itemView.findViewById(R.id.Nombre_Restaurante);
             direccion = itemView.findViewById(R.id.direccion);
             distancia = itemView.findViewById(R.id.distancia);
@@ -111,6 +114,13 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             distancia.setText(" Distancia: "+item.getDistancia());
             precio.setText(" Precio: "+item.getPrecio_medio());
             precio.setText("Puntuación: "+item.getValoracion());
+            if(!item.getFoto().equals("")) {
+                Picasso.get()
+                        .load(item.getFoto())
+                        .error(R.mipmap.ic_launcher_round)
+                        .into(iconImage);
+            }
+
         }
 
 
