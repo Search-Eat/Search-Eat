@@ -42,7 +42,14 @@ public class Local {
         this.distancia = dist;
     }
 
-    public String getDistancia(){return String.valueOf(distancia);}
+    public String getDistancia(){
+        if (distancia < 1){
+            return (Long.toString(Math.round(distancia*1000)) + " metros");
+        }
+        else{
+            return (Long.toString(Math.round(distancia*100)/100) + " km");
+        }
+    }
 
     public String getFoto(){return foto;}
 

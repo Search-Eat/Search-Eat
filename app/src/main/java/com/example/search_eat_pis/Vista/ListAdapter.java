@@ -116,9 +116,4 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
     }
 
-public void register(View view){
-
-
-}
-
 }

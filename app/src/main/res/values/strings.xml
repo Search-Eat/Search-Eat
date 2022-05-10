@@ -43,4 +43,7 @@
     <string name="direccion"></string>
     <string name="precio"></string>
     <string name="distancia"></string>
+    <string name="perfil_num_tel">Número de teléfono</string>
+    <string name="perfil_nom">Nombre</string>
+    <string name="perfil_correo">Correo</string>
 </resources>

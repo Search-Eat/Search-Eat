@@ -13,6 +13,9 @@ public class Usuario {
     private final DatabaseAdapter adapter = DatabaseAdapter.databaseAdapter;
     static public Usuario usuario_actual;
 
+    public String getNombre() { return nombre; }
+
+    public long getTelefono() { return telefono; }
 
     public Usuario(String correo, String nombre, long telefono, String contraseña, ArrayList<String> reservas){
         this.correo = correo;
