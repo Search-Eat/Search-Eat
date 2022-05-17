@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="161dp"
         android:orientation="vertical"
-        android:background="@color/Amarillo_logo">
+        android:background="@color/Color_Secundario">
 
         <LinearLayout
             android:id="@+id/Titulo_boton"

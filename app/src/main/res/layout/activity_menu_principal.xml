@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Menu_PrincipalActivity"
-    android:background="@color/Granate_logo"
+    tools:context=".Vista.Menu_PrincipalActivity"
+    android:background="@color/Color_Fondo"
     >
 
 
@@ -17,7 +17,7 @@
         app:button_colors="@array/colors"
         app:button_icons="@array/icons"
         app:distance="60dp"
-        app:icon_color="@color/Amarillo_logo"
+        app:icon_color="@color/Color_Secundario"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
