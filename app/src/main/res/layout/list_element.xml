@@ -14,7 +14,8 @@
         android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="161dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/Amarillo_logo">
 
         <LinearLayout
             android:id="@+id/Titulo_boton"

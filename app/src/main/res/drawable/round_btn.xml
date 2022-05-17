@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-<solid android:color="#fff"/>
+<solid android:color="@color/Amarillo_logo"/>
     <corners
         android:bottomLeftRadius="45dp"
         android:bottomRightRadius="45dp"

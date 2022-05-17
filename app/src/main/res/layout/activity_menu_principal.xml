@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Menu_PrincipalActivity"
-    android:background="@android:color/white"
+    android:background="@color/Granate_logo"
     >
 
 
@@ -17,6 +17,7 @@
         app:button_colors="@array/colors"
         app:button_icons="@array/icons"
         app:distance="60dp"
+        app:icon_color="@color/Amarillo_logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
