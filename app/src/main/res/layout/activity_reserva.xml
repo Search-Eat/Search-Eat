@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Vista.ReservaActivity"
-    android:background="@color/Granate_logo">
+    android:background="@color/Color_Fondo">
 
     <TextView
         android:id="@+id/textView_NombreRest_Reserva"
@@ -16,7 +16,7 @@
         android:layout_marginTop="60dp"
         android:layout_marginEnd="23dp"
         android:text="@string/text_view_nombre_restaurante"
-        android:textColor="@color/Amarillo_logo"
+        android:textColor="@color/Color_Secundario"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -41,7 +41,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="156dp"
         android:layout_marginEnd="32dp"
-        android:backgroundTint="@color/Amarillo_logo"
+        android:backgroundTint="@color/Color_Secundario"
         android:ems="10"
         android:hint="@string/text_view_nombre"
         android:inputType="textPersonName"
@@ -57,7 +57,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:backgroundTint="@color/Amarillo_logo"
+        android:backgroundTint="@color/Color_Secundario"
         android:ems="10"
         android:hint="@string/text_view_num_tel"
         android:inputType="number"
@@ -123,7 +123,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="125dp"
         android:text="@string/text_view_numPersonas"
-        android:textColor="@color/Amarillo_logo"
+        android:textColor="@color/Color_Secundario"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

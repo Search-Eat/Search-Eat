@@ -5,7 +5,7 @@
     android:id="@+id/Layout_LogIn"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Granate_logo"
+    android:background="@color/Color_Fondo"
     android:onClick="LogIn"
     tools:context=".Vista.LoginActivity">
 
@@ -26,7 +26,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:backgroundTint="@color/Amarillo_logo"
+        android:backgroundTint="@color/Color_Secundario"
         android:ems="10"
         android:hint="@string/text_view_email"
         android:inputType="textPersonName"
@@ -42,7 +42,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:backgroundTint="@color/Amarillo_logo"
+        android:backgroundTint="@color/Color_Secundario"
         android:ems="10"
         android:hint="@string/text_view_password"
         android:inputType="textPassword"

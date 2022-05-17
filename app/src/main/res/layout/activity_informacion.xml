@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Vista.InformacionActivity"
-    android:background="@color/Granate_logo">
+    android:background="@color/Color_Fondo">
 
     <TextView
         android:id="@+id/textView_Creadores_Info"
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="@string/creadores"
-        android:textColor="@color/Amarillo_logo"
+        android:textColor="@color/Color_Secundario"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,7 +70,7 @@
         android:layout_marginTop="56dp"
         android:layout_marginEnd="109dp"
         android:text="@string/version_java"
-        android:textColor="@color/Amarillo_logo"
+        android:textColor="@color/Color_Secundario"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
