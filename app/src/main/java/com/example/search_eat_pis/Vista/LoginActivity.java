@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void changeActivity(){
-        Intent login_mainmenu = new Intent(this, Menu_PrincipalActivity.class);            //Hay que cambiar lo de MainMenu_Navegacion por MainMenu
+        Intent login_mainmenu = new Intent(this, Menu_PrincipalActivity.class);
         startActivity(login_mainmenu);
     }
 

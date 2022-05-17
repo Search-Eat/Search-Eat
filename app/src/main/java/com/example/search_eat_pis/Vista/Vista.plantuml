@@ -1,0 +1,158 @@
+@startuml
+
+title __VISTA's Class Diagram__\n
+
+  namespace com.example.search_eat_pis {
+    namespace Vista {
+      class com.example.search_eat_pis.Vista.InformacionActivity {
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace com.example.search_eat_pis {
+    namespace Vista {
+      class com.example.search_eat_pis.Vista.ListAdapter {
+          - context : Context
+          - mData : List<Local>
+          - mInflater : LayoutInflater
+          + ListAdapter()
+          + getItemCount()
+          + onBindViewHolder()
+          + onCreateViewHolder()
+          + register()
+          + setItems()
+      }
+    }
+  }
+  
+
+  namespace com.example.search_eat_pis {
+    namespace Vista {
+      class com.example.search_eat_pis.Vista.ListAdapter.ViewHolder {
+          ~ direccion : TextView
+          ~ distancia : TextView
+          ~ mapa : ImageButton
+          ~ nombre_rest : TextView
+          ~ precio : TextView
+          ~ puntuacion : TextView
+          ~ reserva : ImageButton
+          + getDistancia()
+          + getMapa()
+          + getNombre_rest()
+          + getPrecio()
+          + getPuntuacion()
+          + getReserva()
+          ~ ViewHolder()
+          ~ bindData()
+      }
+    }
+  }
+  
+
+  namespace com.example.search_eat_pis {
+    namespace Vista {
+      class com.example.search_eat_pis.Vista.LoginActivity {
+          - editTextEmail_LogIn : EditText
+          - editTextPassword_LogIn : EditText
+          + LogIn()
+          + Register()
+          + changeActivity()
+          + setLiveDataObservers()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace com.example.search_eat_pis {
+    namespace Vista {
+      class com.example.search_eat_pis.Vista.MainMenu_Navegacion {
+          {static} + cordenada : Coordenada
+          - loc : Location
+          - locManager : LocationManager
+          + init()
+          + setLiveDataObservers()
+          + ultima_ubicaci�n()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace com.example.search_eat_pis {
+    namespace Vista {
+      class com.example.search_eat_pis.Vista.Menu_PrincipalActivity {
+          + bares()
+          + cafeteria()
+          + informacion()
+          + perfil()
+          + restaurantes()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace com.example.search_eat_pis {
+    namespace Vista {
+      class com.example.search_eat_pis.Vista.RegisterActivity {
+          - editTextEmail_Register : EditText
+          - editTextNombre_Register : EditText
+          - editTextNumTel_Register : EditText
+          - editTextPassword_Register : EditText
+          + SignUp()
+          + changeActivity()
+          + setLiveDataObservers()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace com.example.search_eat_pis {
+    namespace Vista {
+      class com.example.search_eat_pis.Vista.ReservaActivity {
+          ~ hour : int
+          ~ minute : int
+          ~ timebutton : Button
+          - numberPicker : NumberPicker
+          - textView_Fecha_Reserva : TextView
+          - textView_Hora_Reserva : TextView
+          - textView_NumPersonas_Reserva : TextView
+          + Reservar()
+          + onDateSet()
+          + popTimePicker()
+          # onCreate()
+          - showCalendario()
+      }
+    }
+  }
+  
+
+  com.example.search_eat_pis.Vista.InformacionActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.search_eat_pis.Vista.ListAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.search_eat_pis.Vista.ListAdapter +-down- com.example.search_eat_pis.Vista.ListAdapter.ViewHolder
+  com.example.search_eat_pis.Vista.ListAdapter.ViewHolder -up-|> androidx.recyclerview.widget.RecyclerView.ViewHolder
+  com.example.search_eat_pis.Vista.LoginActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.search_eat_pis.Vista.LoginActivity o-- com.example.search_eat_pis.Controller.ViewModel : viewModel
+  com.example.search_eat_pis.Vista.MainMenu_Navegacion -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.search_eat_pis.Vista.MainMenu_Navegacion o-- com.example.search_eat_pis.databinding.ActivityMainMenuNavegacionBinding : binding
+  com.example.search_eat_pis.Vista.MainMenu_Navegacion o-- com.example.search_eat_pis.Model.Sector : sectores
+  com.example.search_eat_pis.Vista.MainMenu_Navegacion o-- com.example.search_eat_pis.Controller.ViewModel : viewModel
+  com.example.search_eat_pis.Vista.Menu_PrincipalActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.search_eat_pis.Vista.RegisterActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.search_eat_pis.Vista.RegisterActivity o-- com.example.search_eat_pis.Controller.ViewModel : viewModel
+  com.example.search_eat_pis.Vista.ReservaActivity .up.|> android.app.DatePickerDialog.OnDateSetListener
+  com.example.search_eat_pis.Vista.ReservaActivity -up-|> androidx.appcompat.app.AppCompatActivity
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml
