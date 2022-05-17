@@ -83,7 +83,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/round_btn"
                     android:contentDescription="@string/imagen_de_reserva"
-                    app:srcCompat="@drawable/ic_calendar_month_black_24dp" />
+                    app:srcCompat="@drawable/ic_calendar_month_white_24dp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -153,7 +153,7 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/round_btn"
                     android:contentDescription="@string/boton_para_ir_al_maps"
-                    app:srcCompat="@drawable/ic_map_black_24dp"
+                    app:srcCompat="@drawable/ic_map_white_24dp"
                     tools:ignore="TouchTargetSizeCheck" />
             </LinearLayout>
 
