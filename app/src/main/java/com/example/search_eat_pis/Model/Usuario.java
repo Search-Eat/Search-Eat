@@ -38,13 +38,12 @@ public class Usuario {
         this.reservas.add(r);
     }
 
-    public void updateUsuario(){
-        adapter.updateReservas(reservas, correo);
-    }
-
     public void updateUsuarioReserva() { adapter.updateReservas(reservas, correo);}
 
-    public void deleteReserva(String r){
-        this.reservas.remove(r);
+    public void deleteReserva(int idx){
+        String id = reservas.get(idx);
+        this.reservas.remove(idx);
+        updateUsuarioReserva();
+        adapter.deleteReserva(id);
     }
 }

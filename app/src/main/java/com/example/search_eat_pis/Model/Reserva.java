@@ -8,6 +8,7 @@ import com.example.search_eat_pis.Controller.DatabaseAdapter;
 
 public class Reserva {
     private String reservaID;
+    private String localID;
     private String nombre;
     private String local;
     private long telefono;
@@ -15,7 +16,8 @@ public class Reserva {
     private long personas;
     private final DatabaseAdapter adapter = DatabaseAdapter.databaseAdapter;
 
-    public Reserva(String nombre, long telefono, String local, long personas, long año, long mes, long dia, long hora, long minuto) {
+    public Reserva(String localID, String nombre, long telefono, String local, long personas, long año, long mes, long dia, long hora, long minuto) {
+        this.localID = localID;
         this.nombre = nombre;
         this.telefono = telefono;
         UUID uuid = UUID.randomUUID();
@@ -27,7 +29,7 @@ public class Reserva {
     public void setId(String id) { this.reservaID = id; }
 
     public void saveReserva() {
-        adapter.saveReserva(reservaID, nombre, telefono, local, personas, fecha.get(Calendar.YEAR), fecha.get(Calendar.MONTH), fecha.get(Calendar.DAY_OF_MONTH), fecha.get(Calendar.HOUR_OF_DAY), fecha.get(Calendar.MINUTE));
+        adapter.saveReserva(reservaID, localID, nombre, telefono, local, personas, fecha.get(Calendar.YEAR), fecha.get(Calendar.MONTH), fecha.get(Calendar.DAY_OF_MONTH), fecha.get(Calendar.HOUR_OF_DAY), fecha.get(Calendar.MINUTE));
     }
 
     public void deleteReserva() {

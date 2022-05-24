@@ -72,6 +72,15 @@ public class ViewModel extends AndroidViewModel implements DatabaseAdapter.vmInt
         }
     }
 
+    public void comprobarReservas(){
+        Iterator it = mReservas.getValue().iterator();
+        while(it.hasNext()){
+            Reserva res = (Reserva) it.next();
+            if(res.valorar()){
+            }
+        }
+    }
+
     @Override
     public void setSector(ArrayList<Sector> s) {
         double dist = Float.POSITIVE_INFINITY;
@@ -134,8 +143,9 @@ public class ViewModel extends AndroidViewModel implements DatabaseAdapter.vmInt
 
     public Reserva getReserva(int idx){return mReservas.getValue().get(idx);}
 
-    public void addReserva(String nombre, long telefono, String local, long personas, Calendar cal){
-        Reserva reserva = new Reserva(  nombre,
+    public void addReserva(String localID, String nombre, long telefono, String local, long personas, Calendar cal){
+        Reserva reserva = new Reserva(  localID,
+                                        nombre,
                                         telefono,
                                         local,
                                         personas,

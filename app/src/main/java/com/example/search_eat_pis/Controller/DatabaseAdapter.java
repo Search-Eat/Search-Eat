@@ -190,11 +190,12 @@ public class DatabaseAdapter extends Activity {
                 });
     }
 
-    public void saveReserva (String id, String nombre, long telefono, String local, long personas, long año, long dia, long mes, long hora, long minuto) {
+    public void saveReserva (String id, String localID, String nombre, long telefono, String local, long personas, long año, long dia, long mes, long hora, long minuto) {
 
         // Create a new user with a first and last name
         Map<String, Object> reserva = new HashMap<>();
         reserva.put("id", id);
+        reserva.put("localID", localID);
         reserva.put("nombre", nombre);
         reserva.put("telefono", telefono);
         reserva.put("local", local);
@@ -236,7 +237,8 @@ public class DatabaseAdapter extends Activity {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 if (reservas.contains(document.getId())){
                                     Log.d(TAG, document.getId() + " => " + document.getData());
-                                    Reserva r = new Reserva(document.getString("nombre"),
+                                    Reserva r = new Reserva(document.getString("localID"),
+                                                            document.getString("nombre"),
                                             (long)          document.get("telefono"),
                                                             document.getString("local"),
                                             (long)          document.get("personas"),
