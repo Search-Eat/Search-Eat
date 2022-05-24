@@ -36,7 +36,9 @@ public class PerfilActivity extends AppCompatActivity {
 
         iniPerfil();
         setLiveDataObservers();
-        //viewModel.iniReservas();
+        if(!Usuario.usuario_actual.getReservas().isEmpty()) {
+            viewModel.iniReservas(Usuario.usuario_actual.getReservas());
+        }
     }
     public void init(ArrayList<Reserva> elements){
         ListAdapter_Reserva listAdapter = new ListAdapter_Reserva(elements,this);

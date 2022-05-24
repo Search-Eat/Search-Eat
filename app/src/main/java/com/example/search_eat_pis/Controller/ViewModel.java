@@ -65,11 +65,8 @@ public class ViewModel extends AndroidViewModel implements DatabaseAdapter.vmInt
         }
     }
 
-    public void iniReservas(){
-        ArrayList<String> mReservas = mUsuario.getValue().getReservas();
-        if(!mReservas.isEmpty()){
-            da.getReservas(mReservas);
-        }
+    public void iniReservas(ArrayList<String> reservas){
+        da.getReservas(reservas);
     }
 
     public void comprobarReservas(){
