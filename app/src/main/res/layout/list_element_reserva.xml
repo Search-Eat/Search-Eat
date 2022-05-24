@@ -14,7 +14,7 @@
         android:id="@+id/card"
         android:layout_width="394dp"
         android:layout_height="161dp"
-        android:background="@color/Color_Secundario">
+        android:background="@color/Gris">
 
         <LinearLayout
             android:layout_width="287dp"
@@ -29,16 +29,17 @@
                 android:id="@+id/nom_rest"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:text="@string/nombre_restaurante" />
+                android:text="@string/nombre_restaurante"
+                android:textColor="@color/white" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/fecha_reserva"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
                 android:text="TextView" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/num_pers"
                 android:layout_width="match_parent"
                 android:layout_height="37dp"
                 android:text="TextView" />
@@ -58,6 +59,7 @@
                 android:layout_width="124dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/round_btn"
+                android:contentDescription="@string/cancelar_reserva"
                 app:srcCompat="@drawable/ic_cancel_white_48dp" />
         </LinearLayout>
     </LinearLayout>

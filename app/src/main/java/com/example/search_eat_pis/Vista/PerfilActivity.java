@@ -3,6 +3,8 @@ package com.example.search_eat_pis.Vista;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.widget.TextView;
@@ -14,12 +16,14 @@ import com.example.search_eat_pis.Model.Usuario;
 import com.example.search_eat_pis.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PerfilActivity extends AppCompatActivity {
     private ViewModel viewModel;
     private TextView nombre;
     private TextView correo;
     private TextView telefono;
+    List<Reserva> elements;
 
 
     @Override
@@ -29,11 +33,18 @@ public class PerfilActivity extends AppCompatActivity {
         nombre = findViewById(R.id.nombrePerfil);
         correo = findViewById(R.id.correoPerfil);
         telefono = findViewById(R.id.telefonoPerfil);
+
         iniPerfil();
         setLiveDataObservers();
         //viewModel.iniReservas();
     }
-
+    public void init(ArrayList<Reserva> elements){
+        ListAdapter_Reserva listAdapter = new ListAdapter_Reserva(elements,this);
+        RecyclerView recyclerView = findViewById(R.id.rvPerfil);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(listAdapter);
+    }
     public void iniPerfil(){
         nombre.setText("Nombre: " + Usuario.usuario_actual.getNombre());
         correo.setText("Correo: " + Usuario.usuario_actual.getCorreo());
@@ -47,7 +58,7 @@ public class PerfilActivity extends AppCompatActivity {
         final Observer<ArrayList<Reserva>> observerReservas = new Observer<ArrayList<Reserva>>() {
             @Override
             public void onChanged(ArrayList<Reserva> reservas) {
-
+                init(reservas);
             }
         };
 

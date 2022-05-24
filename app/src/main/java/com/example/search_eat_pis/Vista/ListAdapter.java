@@ -114,7 +114,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             distancia.setText(" Distancia: "+item.getDistancia());
             precio.setText(" Precio: "+item.getPrecio_medio());
             precio.setText("Puntuación: "+item.getValoracion());
-            if(!item.getFoto().equals("")) {
+            if(!item.getFoto().equals("null")) {
                 Picasso.get()
                         .load(item.getFoto())
                         .error(R.mipmap.ic_launcher_round)
@@ -122,7 +122,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             }
 
         }
-
 
     }
 

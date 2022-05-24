@@ -34,6 +34,8 @@ public class Reserva {
         adapter.deleteReserva(reservaID);
     }
 
+    public long getPersonas() {return personas; }
+
     public String getId() {
         return reservaID;
     }

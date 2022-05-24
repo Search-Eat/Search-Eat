@@ -38,7 +38,7 @@
     <string name="version_java">Version Java</string>
     <string name="num_version">Java VERSION_1_8</string>
     <string name="imagen_del_restaurante"></string>
-    <string name="nombre_restaurante"></string>
+    <string name="nombre_restaurante">Nombre del restaurante: </string>
     <string name="puntuacion"></string>
     <string name="direccion"></string>
     <string name="precio"></string>
@@ -46,4 +46,5 @@
     <string name="perfil_num_tel">Número de teléfono</string>
     <string name="perfil_nom">Nombre</string>
     <string name="perfil_correo">Correo</string>
+    <string name="cancelar_reserva">cancelar reserva</string>
 </resources>
