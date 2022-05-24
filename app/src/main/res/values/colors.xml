@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="Color_Secundario">#000000</color>
     <color name="Color_Fondo">#41d19e</color>
+    <color name="Gris">#CACACA</color>
 </resources>
