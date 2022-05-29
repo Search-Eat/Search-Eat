@@ -73,20 +73,23 @@ public class Local {
         if(getPrecio()==-1){
             return "No disponible";
         }
+        else if (getPrecio()==0){
+            return "Gratis";
+        }
         else if (getPrecio()==1){
 
-            return "€";
+            return "Barato";
         }
         else if (getPrecio()==2){
 
-            return "€€";
+            return "Medio";
         }
         else if (getPrecio()==3){
 
-            return "€€€";
+            return "Caro";
         }
         else{
-            return "€€€€";
+            return "Muy caro";
         }
     }
 
