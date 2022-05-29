@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 
@@ -34,13 +35,15 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class MainMenu_Navegacion extends AppCompatActivity{
+public class MainMenu_Navegacion extends AppCompatActivity implements SearchView.OnQueryTextListener{
+    private SearchView buscador;
     private ActivityMainMenuNavegacionBinding binding;
     private Sector sectores;
     private LocationManager locManager;
     private Location loc;
     static public Coordenada cordenada;
     private ViewModel viewModel;
+    ListAdapter listAdapter;
 
 
     @Override
@@ -50,10 +53,12 @@ public class MainMenu_Navegacion extends AppCompatActivity{
         ultima_ubicación();
         setLiveDataObservers();
         viewModel.iniSector();
+        buscador = findViewById(R.id.Buscador);
+        buscador.setOnQueryTextListener(this);
     }
 
     public void init(ArrayList<Local> elements){
-        ListAdapter listAdapter = new ListAdapter(elements,this);
+         this.listAdapter = new ListAdapter(elements,this);
         RecyclerView recyclerView = findViewById(R.id.lista_cards_restaurantes);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -111,4 +116,16 @@ public class MainMenu_Navegacion extends AppCompatActivity{
     }
 
 
+    @Override
+    public boolean onQueryTextSubmit(String s) {
+
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String s) {
+
+        listAdapter.filtrado(s);
+        return false;
+    }
 }

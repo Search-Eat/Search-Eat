@@ -12,15 +12,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
 
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     private  List<Local> mData;
+    private List<Local> mData_Buscador;
     private LayoutInflater mInflater;
     private Context context;
 
@@ -28,10 +33,30 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         this.mInflater = LayoutInflater.from(context);
         this.context=context;
         this.mData=itemlist;
+        this.mData_Buscador = new ArrayList<>();
+        this.mData_Buscador.addAll(this.mData);
 
     }
     @Override
     public int getItemCount(){ return mData.size();}
+
+    public void filtrado(final String txtBuscar){
+        int longitud = txtBuscar.length();
+        if(longitud==0){
+            mData.clear();
+            mData.addAll(mData_Buscador);
+        }
+        else{
+            List<Local> collection = mData.stream()
+                    .filter(i->i.getNombre().toLowerCase().contains(txtBuscar.toLowerCase()))
+                    .collect(Collectors.toList());
+            mData.clear();
+            mData.addAll(collection);
+
+        }
+        notifyDataSetChanged();
+    }
+
 
     @Override
     public ListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
@@ -60,6 +85,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
              public void onClick(View view) {
                  Intent register = new Intent(context, ReservaActivity.class);
                  register.putExtra("boton",holder.getNombre_rest().toString());
+
                  context.startActivity(register);
              }
          });
@@ -72,6 +98,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         TextView nombre_rest,direccion,distancia,precio,puntuacion;
         ImageButton mapa,reserva;
         private final DatabaseAdapter adapter = DatabaseAdapter.databaseAdapter;
+
 
         public TextView getNombre_rest() {
             return nombre_rest;
@@ -107,6 +134,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             puntuacion = itemView.findViewById(R.id.puntacion);
             mapa = itemView.findViewById(R.id.maps);
             reserva = itemView.findViewById(R.id.reserva);
+
 
         }
         void bindData(final Local item){
