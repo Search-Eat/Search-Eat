@@ -35,7 +35,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class MainMenu_Navegacion extends AppCompatActivity implements SearchView.OnQueryTextListener{
+public class MainMenu_Navegacion extends AppCompatActivity {
     private SearchView buscador;
     private ActivityMainMenuNavegacionBinding binding;
     private Sector sectores;
@@ -54,7 +54,18 @@ public class MainMenu_Navegacion extends AppCompatActivity implements SearchView
         setLiveDataObservers();
         viewModel.iniSector();
         buscador = findViewById(R.id.Buscador);
-        buscador.setOnQueryTextListener(this);
+        buscador.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                listAdapter.filtrado(s);
+                return false;
+            }
+        });
     }
 
     public void init(ArrayList<Local> elements){
@@ -116,16 +127,4 @@ public class MainMenu_Navegacion extends AppCompatActivity implements SearchView
     }
 
 
-    @Override
-    public boolean onQueryTextSubmit(String s) {
-
-        return false;
-    }
-
-    @Override
-    public boolean onQueryTextChange(String s) {
-
-        listAdapter.filtrado(s);
-        return false;
-    }
 }

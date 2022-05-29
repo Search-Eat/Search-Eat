@@ -84,7 +84,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
              @Override
              public void onClick(View view) {
                  Intent register = new Intent(context, ReservaActivity.class);
-                 register.putExtra("boton",holder.getNombre_rest().toString());
+                 register.putExtra("nombre",mData.get(position).getNombre());
+                 register.putExtra("id",mData.get(position).getiD());
 
                  context.startActivity(register);
              }
