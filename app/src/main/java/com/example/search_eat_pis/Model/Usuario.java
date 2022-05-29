@@ -40,9 +40,8 @@ public class Usuario {
 
     public void updateUsuarioReserva() { adapter.updateReservas(reservas, correo);}
 
-    public void deleteReserva(int idx){
-        String id = reservas.get(idx);
-        this.reservas.remove(idx);
+    public void deleteReserva(String id){
+        this.reservas.remove(id);
         updateUsuarioReserva();
         adapter.deleteReserva(id);
     }

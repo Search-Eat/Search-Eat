@@ -9,10 +9,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.example.search_eat_pis.Controller.DatabaseAdapter;
 import com.example.search_eat_pis.R;
 
 import java.util.Calendar;
@@ -23,9 +25,11 @@ public class ReservaActivity extends AppCompatActivity implements DatePickerDial
     private TextView textView_Fecha_Reserva;
     private TextView textView_Hora_Reserva;
     private TextView textView_NumPersonas_Reserva;
+    private ImageView imagenLocal;
+    private TextView nombreLocal;
     private NumberPicker numberPicker;
-    Button timebutton;
-    int hour, minute;
+    private Button timebutton;
+    private int hour, minute;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +40,18 @@ public class ReservaActivity extends AppCompatActivity implements DatePickerDial
         timebutton = findViewById(R.id.button_hora_Reserva);
         textView_NumPersonas_Reserva = findViewById(R.id.textView_numPersonas_Reserva);
         numberPicker = (NumberPicker) findViewById(R.id.numberPicker);
+        nombreLocal = findViewById(R.id.textView_NombreRest_Reserva);
+        imagenLocal = findViewById(R.id.imageView_avatar);
+
+        nombreLocal.setText(getIntent().getStringExtra("nombre"));
+        DatabaseAdapter adapter = DatabaseAdapter.databaseAdapter;
+        adapter.downloadPhotoFromStorage("locales/",getIntent().getStringExtra("id"),imagenLocal);
 
         numberPicker.setMaxValue(15);
         numberPicker.setMinValue(0);
         numberPicker.setValue(2);
+
+
 
         numberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
@@ -55,7 +67,6 @@ public class ReservaActivity extends AppCompatActivity implements DatePickerDial
             }
         });
     }
-
     private void showCalendario(){
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 this, this,
