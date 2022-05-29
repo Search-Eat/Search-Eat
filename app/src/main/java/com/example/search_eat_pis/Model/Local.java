@@ -18,6 +18,9 @@ public class Local {
     private final DatabaseAdapter adapter = DatabaseAdapter.databaseAdapter;
     private String color;
 
+    public String getiD() {
+        return iD;
+    }
 
     public Local(String id, String direccion, ArrayList<String> etiquetas, double latitud, double longitud, String nombre, Object valoración, long num_valoraciones, String foto, long precio){
         this.iD = id;

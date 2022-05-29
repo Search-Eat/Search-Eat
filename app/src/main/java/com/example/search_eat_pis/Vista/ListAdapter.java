@@ -1,8 +1,8 @@
 package com.example.search_eat_pis.Vista;
+import com.example.search_eat_pis.Controller.DatabaseAdapter;
 import com.example.search_eat_pis.MapsActivity;
 import com.example.search_eat_pis.Model.Local;
 import com.example.search_eat_pis.R;
-import com.squareup.picasso.Picasso;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -71,6 +71,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         ImageView iconImage;
         TextView nombre_rest,direccion,distancia,precio,puntuacion;
         ImageButton mapa,reserva;
+        private final DatabaseAdapter adapter = DatabaseAdapter.databaseAdapter;
 
         public TextView getNombre_rest() {
             return nombre_rest;
@@ -115,10 +116,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             precio.setText(" Precio: "+item.getPrecio_medio());
             precio.setText("Puntuación: "+item.getValoracion());
             if(!item.getFoto().equals("null")) {
-                Picasso.get()
-                        .load(item.getFoto())
-                        .error(R.mipmap.ic_launcher_round)
-                        .into(iconImage);
+                adapter.downloadPhotoFromStorage(item.getiD(),iconImage);
             }
 
         }

@@ -6,8 +6,11 @@ import com.example.search_eat_pis.Model.Local;
 
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.util.Log;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 
@@ -25,12 +28,14 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.android.gms.tasks.Continuation;
+import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -341,5 +346,23 @@ public class DatabaseAdapter extends Activity {
                 .update(
                         "reservas", reservas
                 );
+    }
+    public void downloadPhotoFromStorage(String id, ImageView img){
+        StorageReference storageReference = storage.getReference().child("locales/"+id+".png");
+
+        try{
+            File localfile = File.createTempFile("tempfile",".png");
+            storageReference.getFile(localfile)
+                    .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                            Bitmap bitmap = BitmapFactory.decodeFile(localfile.getAbsolutePath());
+                            img.setImageBitmap(bitmap);
+                        }
+                    });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }

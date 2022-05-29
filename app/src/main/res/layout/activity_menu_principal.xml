@@ -17,7 +17,7 @@
         app:button_colors="@array/colors"
         app:button_icons="@array/icons"
         app:distance="60dp"
-        app:icon_color="@color/Color_Secundario"
+        app:icon_color="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
