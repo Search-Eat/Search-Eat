@@ -347,8 +347,8 @@ public class DatabaseAdapter extends Activity {
                         "reservas", reservas
                 );
     }
-    public void downloadPhotoFromStorage(String id, ImageView img){
-        StorageReference storageReference = storage.getReference().child("locales/"+id+".png");
+    public void downloadPhotoFromStorage(String path, String id, ImageView img){
+        StorageReference storageReference = storage.getReference().child(path+id+".png");
 
         try{
             File localfile = File.createTempFile("tempfile",".png");
