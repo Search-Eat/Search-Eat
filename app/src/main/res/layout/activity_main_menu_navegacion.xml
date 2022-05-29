@@ -44,6 +44,7 @@
         <Button
             android:id="@+id/Ordenar"
             style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -53,6 +54,7 @@
         <Button
             android:id="@+id/Abierto"
             style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -61,6 +63,7 @@
         <Button
             android:id="@+id/precio"
             style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
