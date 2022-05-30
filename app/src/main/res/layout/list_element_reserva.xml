@@ -55,7 +55,7 @@
                 android:layout_height="100dp" />
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/boton_eliminar_reserva"
                 android:layout_width="124dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/round_btn"
