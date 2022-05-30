@@ -80,7 +80,7 @@ public class ViewModel extends AndroidViewModel implements DatabaseAdapter.vmInt
 
     @Override
     public void setSector(ArrayList<Sector> s) {
-        double dist = Float.POSITIVE_INFINITY;
+        double dist = Double.POSITIVE_INFINITY;
         Iterator it = s.iterator();
         Sector sector = null;
 
