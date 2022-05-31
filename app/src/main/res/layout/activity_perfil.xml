@@ -8,47 +8,56 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="141dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.462"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:srcCompat="@drawable/logo_searcheat" />
 
     <TextView
         android:id="@+id/nombrePerfil"
-        android:layout_width="210dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="167dp"
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="228dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/perfil_nom"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/correoPerfil"
-        android:layout_width="209dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="243dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/perfil_correo"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/telefonoPerfil"
-        android:layout_width="209dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="318dp"
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="336dp"
         android:ems="10"
         android:hint="@string/perfil_num_tel"
         android:inputType="phone"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/correoPerfil"
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="284dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/perfil_correo"
+        android:textStyle="bold"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

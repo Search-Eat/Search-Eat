@@ -23,7 +23,6 @@ public class PerfilActivity extends AppCompatActivity {
     private TextView nombre;
     private TextView correo;
     private TextView telefono;
-    List<Reserva> elements;
 
 
     @Override
