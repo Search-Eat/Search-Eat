@@ -20,7 +20,7 @@ import com.example.search_eat_pis.R;
 
 import java.util.List;
 
-public class ListAdapter_Reserva extends RecyclerView.Adapter<ListAdapter_Reserva.ViewHolder_reseva> {
+public class ListAdapter_Reserva extends RecyclerView.Adapter<ListAdapter_Reserva.ViewHolder_reserva> {
 
     private List<Reserva> mData;
     private LayoutInflater mInflater;
@@ -35,13 +35,13 @@ public class ListAdapter_Reserva extends RecyclerView.Adapter<ListAdapter_Reserv
     public int getItemCount(){return mData.size();}
 
     @Override
-    public ListAdapter_Reserva.ViewHolder_reseva onCreateViewHolder(ViewGroup parent, int viewType){
+    public ListAdapter_Reserva.ViewHolder_reserva onCreateViewHolder(ViewGroup parent, int viewType){
         View view = mInflater.inflate(R.layout.list_element_reserva, null);
-        return new ListAdapter_Reserva.ViewHolder_reseva(view);
+        return new ListAdapter_Reserva.ViewHolder_reserva(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ListAdapter_Reserva.ViewHolder_reseva holder, @SuppressLint("RecyclerView") final int position) {
+    public void onBindViewHolder(@NonNull ListAdapter_Reserva.ViewHolder_reserva holder, @SuppressLint("RecyclerView") final int position) {
         holder.binData(mData.get(position));
         holder.getEliminar().setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,17 +61,17 @@ public class ListAdapter_Reserva extends RecyclerView.Adapter<ListAdapter_Reserv
 
     public void setItems(List<Reserva> element){this.mData = element;}
 
-    public class ViewHolder_reseva extends RecyclerView.ViewHolder{
+    public class ViewHolder_reserva extends RecyclerView.ViewHolder{
         private TextView nombre, fecha,num_pers, local, telefono;
         private ImageButton eliminar, valorar;
         private ImageView imagen;
-
+        private final DatabaseAdapter adapter = DatabaseAdapter.databaseAdapter;
         public ImageButton getValorar(){return valorar;}
         public ImageButton getEliminar() {
             return eliminar;
         }
 
-        public ViewHolder_reseva(View itemView) {
+        public ViewHolder_reserva(View itemView) {
             super(itemView);
             nombre = itemView.findViewById(R.id.nombre_reserva);
             telefono = itemView.findViewById(R.id.telefono_reserva);
@@ -80,17 +80,16 @@ public class ListAdapter_Reserva extends RecyclerView.Adapter<ListAdapter_Reserv
             num_pers = itemView.findViewById(R.id.numero_personas);
             eliminar = itemView.findViewById(R.id.boton_eliminar_reserva);
             valorar = itemView.findViewById(R.id.boton_valorar);
-            imagen = itemView.findViewById(R.id.imagen_local);
+            imagen = itemView.findViewById(R.id.imagen_local_reserva);
 
         }
 
         void binData(final Reserva item){
             local.setText(item.getLocal());
-            nombre.setText(" Nombre: " + item.getLocal());
+            nombre.setText(" Nombre: " + item.getNombre());
             telefono.setText(" Teléfono: " + Long.toString(item.getTelefono()));
-            fecha.setText(" Fecha de reserva: " + item.getFecha().getTime().toString().substring(0,item.getFecha().getTime().toString().length()-9));
-            num_pers.setText( " Número de personas: " + String.valueOf(item.getPersonas()));
-            DatabaseAdapter adapter = DatabaseAdapter.databaseAdapter;
+            fecha.setText(" Fecha de reserva: " + item.getFecha());
+            num_pers.setText( " Número de personas: " + Long.toString(item.getPersonas()));
             adapter.downloadPhotoFromStorage("locales/",item.getLocalID(),imagen);
         }
     }
