@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         final Observer<Usuario> observerUsuario = new Observer<Usuario>() {
             @Override
             public void onChanged(Usuario u) {
-                if (viewModel.getUsuario().getValue().equals(null)){
+                if (u == null){
                     Toast.makeText(LoginActivity.this, "El usuario o la contraseña son incorrectos", Toast.LENGTH_SHORT).show();
                 } else{
                     changeActivity();

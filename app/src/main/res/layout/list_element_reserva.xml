@@ -38,6 +38,10 @@
                     app:srcCompat="@drawable/ic_restaurant_black_24dp" />
             </LinearLayout>
 
+            <Space
+                android:layout_width="5dp"
+                android:layout_height="match_parent" />
+
             <LinearLayout
                 android:id="@+id/mid1"
                 android:layout_width="136dp"
