@@ -62,10 +62,9 @@ public class ListAdapter_Reserva extends RecyclerView.Adapter<ListAdapter_Reserv
     public void setItems(List<Reserva> element){this.mData = element;}
 
     public class ViewHolder_reseva extends RecyclerView.ViewHolder{
-        private TextView nombre, fecha,num_pers, local;
+        private TextView nombre, fecha,num_pers, local, telefono;
         private ImageButton eliminar, valorar;
         private ImageView imagen;
-        String aux;
 
         public ImageButton getValorar(){return valorar;}
         public ImageButton getEliminar() {
@@ -75,6 +74,7 @@ public class ListAdapter_Reserva extends RecyclerView.Adapter<ListAdapter_Reserv
         public ViewHolder_reseva(View itemView) {
             super(itemView);
             nombre = itemView.findViewById(R.id.nombre_reserva);
+            telefono = itemView.findViewById(R.id.telefono_reserva);
             fecha = itemView.findViewById(R.id.fecha_reserva);
             local = itemView.findViewById(R.id.Nombre_Restaurante_Reserva);
             num_pers = itemView.findViewById(R.id.numero_personas);
@@ -86,9 +86,10 @@ public class ListAdapter_Reserva extends RecyclerView.Adapter<ListAdapter_Reserv
 
         void binData(final Reserva item){
             local.setText(item.getLocal());
-            nombre.setText(item.getLocal());
-            fecha.setText(item.getFecha().getTime().toString().substring(0,item.getFecha().getTime().toString().length()-9));
-            num_pers.setText(String.valueOf(item.getPersonas()));
+            nombre.setText(" Nombre: " + item.getLocal());
+            telefono.setText(" Teléfono: " + Long.toString(item.getTelefono()));
+            fecha.setText(" Fecha de reserva: " + item.getFecha().getTime().toString().substring(0,item.getFecha().getTime().toString().length()-9));
+            num_pers.setText( " Número de personas: " + String.valueOf(item.getPersonas()));
             DatabaseAdapter adapter = DatabaseAdapter.databaseAdapter;
             adapter.downloadPhotoFromStorage("locales/",item.getLocalID(),imagen);
         }

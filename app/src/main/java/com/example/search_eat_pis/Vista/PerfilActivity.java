@@ -29,6 +29,7 @@ public class PerfilActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
+
         nombre = findViewById(R.id.nombrePerfil);
         correo = findViewById(R.id.correoPerfil);
         telefono = findViewById(R.id.telefonoPerfil);

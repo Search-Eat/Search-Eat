@@ -7,7 +7,7 @@
     android:background="@color/Color_Fondo">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imagenLogo"
         android:layout_width="250dp"
         android:layout_height="250dp"
         app:layout_constraintEnd_toEndOf="parent"
