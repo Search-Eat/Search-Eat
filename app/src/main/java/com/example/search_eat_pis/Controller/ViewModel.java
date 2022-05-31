@@ -25,7 +25,7 @@ public class ViewModel extends AndroidViewModel implements DatabaseAdapter.vmInt
     private MutableLiveData<Usuario> mUsuario;
     private MutableLiveData<ArrayList<Reserva>> mReservas;
     private MutableLiveData<Boolean> mBoolean;
-    DatabaseAdapter da;
+    private DatabaseAdapter da;
 
     public ViewModel(Application application) {
             super(application);
@@ -81,21 +81,27 @@ public class ViewModel extends AndroidViewModel implements DatabaseAdapter.vmInt
     @Override
     public void setSector(ArrayList<Sector> s) {
         double dist = Double.POSITIVE_INFINITY;
+        ArrayList<String> restaurantes = new ArrayList<>();
+        ArrayList<String> bares = new ArrayList<>();
+        ArrayList<String> cafes = new ArrayList<>();
+        Coordenada c = null;
         Iterator it = s.iterator();
-        Sector sector = null;
 
         while(it.hasNext()){
             Sector sec = (Sector) it.next();
-            if (dist > coordenada.distancia(sec.getCoordenada())){
-                sector = sec;
-                dist = coordenada.distancia(sec.getCoordenada());
+            if (1 >= coordenada.distancia(sec.getCoordenada())){
+                restaurantes.addAll(sec.getRestaurantes());
+                bares.addAll(sec.getBares());
+                cafes.addAll(sec.getCafes());
+                c = sec.getCoordenada();
             }
         }
-        if (sector.equals(null)){
+        if (c.equals(null)){
             mToast.setValue("No se ha encontrado el sector");
         }
         else{
-            mSector.setValue(sector);
+            Sector superSector = new Sector(Double.toString(c.getLatitud()),Double.toString(c.getLongitud()),restaurantes,bares,cafes);
+            mSector.setValue(superSector);
         }
     }
     public void isValidCorreo(String correo){ da.isValidCorreo(correo);}

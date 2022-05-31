@@ -7,11 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.search_eat_pis.Controller.DatabaseAdapter;
 import com.example.search_eat_pis.Model.Reserva;
 import com.example.search_eat_pis.Model.Usuario;
 import com.example.search_eat_pis.R;
@@ -49,31 +51,46 @@ public class ListAdapter_Reserva extends RecyclerView.Adapter<ListAdapter_Reserv
                 mData.remove(position);
             }
         });
+        holder.getValorar().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     public void setItems(List<Reserva> element){this.mData = element;}
 
     public class ViewHolder_reseva extends RecyclerView.ViewHolder{
-        private TextView nombre, fecha,num_pers;
-        private ImageButton eliminar;
+        private TextView nombre, fecha,num_pers, local;
+        private ImageButton eliminar, valorar;
+        private ImageView imagen;
         String aux;
 
+        public ImageButton getValorar(){return valorar;}
         public ImageButton getEliminar() {
             return eliminar;
         }
 
         public ViewHolder_reseva(View itemView) {
             super(itemView);
-            nombre = itemView.findViewById(R.id.nom_rest);
+            nombre = itemView.findViewById(R.id.nombre_reserva);
             fecha = itemView.findViewById(R.id.fecha_reserva);
-            num_pers = itemView.findViewById(R.id.num_pers);
+            local = itemView.findViewById(R.id.Nombre_Restaurante_Reserva);
+            num_pers = itemView.findViewById(R.id.numero_personas);
             eliminar = itemView.findViewById(R.id.boton_eliminar_reserva);
+            valorar = itemView.findViewById(R.id.boton_valorar);
+            imagen = itemView.findViewById(R.id.imagen_local);
+
         }
 
         void binData(final Reserva item){
+            local.setText(item.getLocal());
             nombre.setText(item.getLocal());
             fecha.setText(item.getFecha().getTime().toString().substring(0,item.getFecha().getTime().toString().length()-9));
             num_pers.setText(String.valueOf(item.getPersonas()));
+            DatabaseAdapter adapter = DatabaseAdapter.databaseAdapter;
+            adapter.downloadPhotoFromStorage("locales/",item.getLocalID(),imagen);
         }
     }
 

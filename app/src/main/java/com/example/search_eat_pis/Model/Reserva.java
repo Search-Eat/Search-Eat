@@ -9,6 +9,23 @@ import com.example.search_eat_pis.Controller.DatabaseAdapter;
 public class Reserva {
     private String reservaID;
     private String localID;
+
+    public String getReservaID() {
+        return reservaID;
+    }
+
+    public String getLocalID() {
+        return localID;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public long getTelefono() {
+        return telefono;
+    }
+
     private String nombre;
     private String local;
     private long telefono;
