@@ -47,6 +47,9 @@ public class Local {
 
     public String getDistancia(){
         if (distancia < 1){
+            if (Math.round(distancia*1000) == 1){
+                return (Long.toString(Math.round(distancia*1000)) + " metro");
+            }
             return (Long.toString(Math.round(distancia*1000)) + " metros");
         }
         else{
