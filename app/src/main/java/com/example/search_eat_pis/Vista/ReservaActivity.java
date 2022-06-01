@@ -51,8 +51,6 @@ public class ReservaActivity extends AppCompatActivity implements DatePickerDial
         numberPicker.setMinValue(0);
         numberPicker.setValue(2);
 
-
-
         numberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker numberPicker, int oldValue, int newValue) {
@@ -74,6 +72,7 @@ public class ReservaActivity extends AppCompatActivity implements DatePickerDial
                 Calendar.getInstance().get(Calendar.MONTH),
                 Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
         );
+        datePickerDialog.show();
     }
 
     @Override
