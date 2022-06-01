@@ -52,7 +52,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
                     .collect(Collectors.toList());
             mData.clear();
             mData.addAll(collection);
-
         }
         notifyDataSetChanged();
     }
@@ -135,8 +134,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             puntuacion = itemView.findViewById(R.id.puntacion);
             mapa = itemView.findViewById(R.id.maps);
             reserva = itemView.findViewById(R.id.reserva);
-
-
         }
         void bindData(final Local item){
             nombre_rest.setText(item.getNombre());
