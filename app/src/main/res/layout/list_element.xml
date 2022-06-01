@@ -31,12 +31,16 @@
 
                 <ImageView
                     android:id="@+id/imageView3"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:contentDescription="@string/imagen_del_restaurante"
                     app:srcCompat="@drawable/ic_restaurant_black_24dp" />
             </LinearLayout>
+
+            <Space
+                android:layout_width="5dp"
+                android:layout_height="match_parent" />
 
             <LinearLayout
                 android:id="@+id/mid1"
@@ -46,7 +50,7 @@
 
                 <TextView
                     android:id="@+id/Nombre_Restaurante"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="@string/nombre_restaurante"

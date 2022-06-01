@@ -7,58 +7,75 @@
     android:background="@color/Color_Fondo">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="141dp"
-        android:layout_marginTop="16dp"
+        android:id="@+id/imagenLogo"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.462"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:srcCompat="@drawable/logo_searcheat" />
 
     <TextView
         android:id="@+id/nombrePerfil"
-        android:layout_width="210dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="167dp"
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="228dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/perfil_nom"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/correoPerfil"
-        android:layout_width="209dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="243dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/perfil_correo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/telefonoPerfil"
-        android:layout_width="209dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="318dp"
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="336dp"
         android:ems="10"
         android:hint="@string/perfil_num_tel"
         android:inputType="phone"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TouchTargetSizeCheck" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvPerfil"
-        android:layout_width="409dp"
-        android:layout_height="328dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="401dp"
+    <TextView
+        android:id="@+id/correoPerfil"
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="284dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/perfil_correo"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <LinearLayout
+        android:id="@+id/Reservas"
+        android:layout_width="match_parent"
+        android:layout_height="328dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvPerfil"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

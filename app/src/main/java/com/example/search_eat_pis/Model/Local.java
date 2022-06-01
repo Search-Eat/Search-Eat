@@ -47,10 +47,13 @@ public class Local {
 
     public String getDistancia(){
         if (distancia < 1){
+            if (Math.round(distancia*1000) == 1){
+                return (Long.toString(Math.round(distancia*1000)) + " metro");
+            }
             return (Long.toString(Math.round(distancia*1000)) + " metros");
         }
         else{
-            return (Long.toString(Math.round(distancia*100)/100) + " km");
+            return (Double.toString(Math.round(distancia*100)/100) + " km");
         }
     }
 
@@ -60,7 +63,12 @@ public class Local {
 
     public double getValoracion(){return valoracion;}
 
-    public long getNumValoraciones(){return num_valoraciones;}
+    public String getNumValoraciones(){
+        if(num_valoraciones == 1){
+            return Long.toString(num_valoraciones) + " valoración";
+        }
+        return Long.toString(num_valoraciones) + " valoraciones";
+    }
 
     public String getDireccion(){return direccion;}
 

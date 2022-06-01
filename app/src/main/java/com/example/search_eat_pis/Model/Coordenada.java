@@ -17,20 +17,16 @@ public class Coordenada {
         this.longitud = longitud;
     }
 
-    public double distancia(Coordenada cord){
+    public double distancia(Coordenada c){
+        double lat1 = this.latitud;
+        double lat2 = c.latitud;
+        double lon1 = this.longitud;
+        double lon2 = c.longitud;
 
-        double lat_ini = latitud * (Math.PI / 180);
-        double lon_ini = longitud * (Math.PI / 180);
-        double lat_fin = cord.latitud * (Math.PI / 180);
-        double lon_fin = cord.longitud * (Math.PI / 180);
-        double var_lat = Math.abs(lat_ini - lat_fin);
-        double var_lon = Math.abs(lon_ini - lon_fin);
+        double d = Math.acos(Math.sin(lat1)*Math.sin(lat2)+Math.cos(lat1)*Math.cos(lat2)*Math.cos(lon2-lon1));
+        double dist = 111.18 * d;
 
-        double dist = (Math.pow(Math.sin(var_lat/2),2) + Math.cos(lat_ini)) * Math.cos(lat_fin) * Math.pow(Math.sin(var_lon/2),2);
-        dist = 2 * Math.atan(Math.sqrt(dist) / Math.sqrt(1-dist));
-        dist = 6378 * dist;
-
-        return dist;
+        return Math.abs(dist);
     }
 
     public double getLatitud() {

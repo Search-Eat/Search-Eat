@@ -143,7 +143,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             direccion.setText(" Dirección: "+item.getDireccion());
             distancia.setText(" Distancia: "+item.getDistancia());
             precio.setText(" Precio: "+item.getPrecio_medio());
-            puntuacion.setText(" Puntuación: "+item.getValoracion());
+            puntuacion.setText(" Puntuación: "+item.getValoracion() + " de " + item.getNumValoraciones());
             if(!item.getFoto().equals("null")) {
                 adapter.downloadPhotoFromStorage("locales/",item.getiD(),iconImage);
             }

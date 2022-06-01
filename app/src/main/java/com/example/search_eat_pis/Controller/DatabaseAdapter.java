@@ -97,7 +97,7 @@ public class DatabaseAdapter extends Activity {
     }
 
     public void getSectores() {
-        Log.d(TAG, "updatesectores");
+        Log.d(TAG, "getSectores");
         DatabaseAdapter.db.collection("Sectores")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -105,10 +105,14 @@ public class DatabaseAdapter extends Activity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
 
-                            ArrayList<Sector> retrieved_s = new ArrayList<Sector>();
+                            ArrayList<Sector> retrieved_s = new ArrayList<>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
-                                retrieved_s.add(new Sector(document.getString("latitud"), document.getString("longitud"), (ArrayList<String>) document.get("restaurant"), (ArrayList<String>) document.get("bar"), (ArrayList<String>) document.get("cafe")));
+                                retrieved_s.add(new Sector( document.getString("latitud"),
+                                                            document.getString("longitud"),
+                                        (ArrayList<String>) document.get("restaurant"),
+                                        (ArrayList<String>) document.get("bar"),
+                                        (ArrayList<String>) document.get("cafe")));
                             }
                             listener.setSector(retrieved_s);
 

@@ -23,7 +23,9 @@ public class Reserva {
         UUID uuid = UUID.randomUUID();
         this.reservaID = uuid.toString();
         this.local = local;
-        fecha.set((int) año, (int) dia, (int) mes, (int) hora, (int) minuto);
+        this.personas = personas;
+        fecha = Calendar.getInstance();
+        fecha.set((int) año, (int) mes, (int) dia, (int) hora, (int) minuto);
     }
 
     public void setId(String id) { this.reservaID = id; }
@@ -32,8 +34,16 @@ public class Reserva {
         adapter.saveReserva(reservaID, localID, nombre, telefono, local, personas, fecha.get(Calendar.YEAR), fecha.get(Calendar.MONTH), fecha.get(Calendar.DAY_OF_MONTH), fecha.get(Calendar.HOUR_OF_DAY), fecha.get(Calendar.MINUTE));
     }
 
-    public void deleteReserva() {
-        adapter.deleteReserva(reservaID);
+    public String getLocalID() {
+        return localID;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public long getTelefono() {
+        return telefono;
     }
 
     public long getPersonas() {return personas; }
@@ -42,8 +52,13 @@ public class Reserva {
         return reservaID;
     }
 
-    public Calendar getFecha() {
-        return fecha;
+    public String getFecha() {
+        String sFecha = Integer.toString(fecha.get(Calendar.DAY_OF_MONTH))
+                + "/" + Integer.toString(fecha.get(Calendar.MONTH))
+                + "/" + Integer.toString(fecha.get(Calendar.YEAR))
+                + " " + Integer.toString(fecha.get(Calendar.HOUR_OF_DAY))
+                + ":" + Integer.toString(fecha.get(Calendar.MINUTE));
+        return sFecha;
     }
 
     public String getLocal() {

@@ -23,13 +23,13 @@ public class PerfilActivity extends AppCompatActivity {
     private TextView nombre;
     private TextView correo;
     private TextView telefono;
-    List<Reserva> elements;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
+
         nombre = findViewById(R.id.nombrePerfil);
         correo = findViewById(R.id.correoPerfil);
         telefono = findViewById(R.id.telefonoPerfil);
