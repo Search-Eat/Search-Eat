@@ -69,7 +69,7 @@
 
                 <TextView
                     android:id="@+id/t_reserva"
-                    android:layout_width="78dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/reserva" />
             </LinearLayout>

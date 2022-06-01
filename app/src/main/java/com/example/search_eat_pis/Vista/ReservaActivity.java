@@ -74,6 +74,7 @@ public class ReservaActivity extends AppCompatActivity implements DatePickerDial
                 Calendar.getInstance().get(Calendar.MONTH),
                 Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
         );
+         datePickerDialog.show();
     }
 
     @Override
