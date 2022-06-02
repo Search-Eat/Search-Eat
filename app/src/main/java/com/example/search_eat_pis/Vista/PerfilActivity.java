@@ -49,6 +49,7 @@ public class PerfilActivity extends AppCompatActivity implements ListAdapter_Res
         if(!Usuario.usuario_actual.getReservas().isEmpty()) {
             viewModel.iniReservas(Usuario.usuario_actual.getReservas());
         }
+
     }
     public void init(ArrayList<Reserva> elements){
         listAdapter = new ListAdapter_Reserva(elements,this, (ListAdapter_Reserva.playerInterface) this);
@@ -56,7 +57,6 @@ public class PerfilActivity extends AppCompatActivity implements ListAdapter_Res
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(listAdapter);
-        listAdapter.notifyDataSetChanged();
     }
     public void iniPerfil(){
         nombre.setText("Nombre: " + Usuario.usuario_actual.getNombre());
