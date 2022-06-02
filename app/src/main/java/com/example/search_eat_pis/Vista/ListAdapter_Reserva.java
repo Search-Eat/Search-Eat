@@ -9,26 +9,36 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.search_eat_pis.Controller.DatabaseAdapter;
+import com.example.search_eat_pis.Model.Local;
 import com.example.search_eat_pis.Model.Reserva;
 import com.example.search_eat_pis.Model.Usuario;
 import com.example.search_eat_pis.R;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class ListAdapter_Reserva extends RecyclerView.Adapter<ListAdapter_Reserva.ViewHolder_reserva> {
 
     private List<Reserva> mData;
     private LayoutInflater mInflater;
-    private Context context;
-    public ListAdapter_Reserva(List<Reserva> itemList, Context context){
+    private final playerInterface listener;
+
+    public ListAdapter_Reserva(List<Reserva> itemList, Context context, playerInterface listener) {
+        this.listener = listener;
         this.mInflater= LayoutInflater.from(context);
-        this.context = context;
         this.mData = itemList;
+    }
+
+    public interface playerInterface{
+        void valorar(int reserva);
+        void eliminar(int reserva);
     }
 
     @Override
@@ -46,20 +56,16 @@ public class ListAdapter_Reserva extends RecyclerView.Adapter<ListAdapter_Reserv
         holder.getEliminar().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String reservaID = mData.get(position).getId();
-                Usuario.usuario_actual.deleteReserva(reservaID);
-                mData.remove(position);
+                listener.eliminar(position);
             }
         });
         holder.getValorar().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                listener.valorar(position);
             }
         });
     }
-
-    public void setItems(List<Reserva> element){this.mData = element;}
 
     public class ViewHolder_reserva extends RecyclerView.ViewHolder{
         private TextView nombre, fecha,num_pers, local, telefono;

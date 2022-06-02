@@ -28,8 +28,10 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     private List<Local> mData_Buscador;
     private LayoutInflater mInflater;
     private Context context;
+    private String local;
 
-    public ListAdapter(List<Local> itemlist, Context context){
+    public ListAdapter(List<Local> itemlist,String local, Context context){
+        this.local = local;
         this.mInflater = LayoutInflater.from(context);
         this.context=context;
         this.mData=itemlist;
@@ -85,7 +87,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
                  Intent register = new Intent(context, ReservaActivity.class);
                  register.putExtra("nombre",mData.get(position).getNombre());
                  register.putExtra("id",mData.get(position).getiD());
-
+                 register.putExtra("local", local);
                  context.startActivity(register);
              }
          });

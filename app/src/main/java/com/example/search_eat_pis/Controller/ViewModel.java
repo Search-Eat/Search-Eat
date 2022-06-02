@@ -65,6 +65,8 @@ public class ViewModel extends AndroidViewModel implements DatabaseAdapter.vmInt
         }
     }
 
+    public void iniLocales(ArrayList<String> locales){ da.getLocales(locales, new Coordenada(0,0));}
+
     public void iniReservas(ArrayList<String> reservas){
         da.getReservas(reservas);
     }
@@ -80,7 +82,6 @@ public class ViewModel extends AndroidViewModel implements DatabaseAdapter.vmInt
 
     @Override
     public void setSector(ArrayList<Sector> s) {
-        double dist = Double.POSITIVE_INFINITY;
         ArrayList<String> restaurantes = new ArrayList<>();
         ArrayList<String> bares = new ArrayList<>();
         ArrayList<String> cafes = new ArrayList<>();
@@ -104,6 +105,7 @@ public class ViewModel extends AndroidViewModel implements DatabaseAdapter.vmInt
             mSector.setValue(superSector);
         }
     }
+
     public void isValidCorreo(String correo){ da.isValidCorreo(correo);}
 
     @Override
@@ -146,23 +148,50 @@ public class ViewModel extends AndroidViewModel implements DatabaseAdapter.vmInt
 
     public Reserva getReserva(int idx){return mReservas.getValue().get(idx);}
 
-    public void addReserva(String localID, String nombre, long telefono, String local, long personas, Calendar cal){
-        Reserva reserva = new Reserva(  localID,
-                                        nombre,
-                                        telefono,
-                                        local,
-                                        personas,
-                                (long)  cal.get(Calendar.YEAR),
-                                (long)  cal.get(Calendar.MONTH),
-                                (long)  cal.get(Calendar.DAY_OF_MONTH),
-                                (long)  cal.get(Calendar.HOUR_OF_DAY),
-                                (long)  cal.get(Calendar.MINUTE));
+    public Local getLocal(String id){
+        Local local = null;
+        Iterator it = mLocales.getValue().iterator();
+        while (it.hasNext()){
+            Local l = (Local) it.next();
+            if (l.getiD().equals(id)){
+                local = l;
+            }
+        }
+        return local;
+    }
+
+    public void valorar(int idx, int valoración){
+        Reserva reserva = getReserva(idx);
+        if(reserva.valorar()){
+            Local local = getLocal(reserva.getLocalID());
+            if (local == null){
+                setToast("No se ha podido valorar el local.");
+            }
+            else{
+                local.addValoracion(valoración);
+                local.updateValoraciones();
+            }
+        }
+        else{
+            setToast("La valoración no está disponible.");
+        }
+    }
+
+    public void eliminarReserva(int idx){
+        Reserva reserva = getReserva(idx);
+        Usuario.usuario_actual.deleteReserva(reserva.getId());
+        da.deleteReserva(reserva.getId());
+        ArrayList<Reserva> reservas = mReservas.getValue();
+        reservas.remove(reserva);
+        mReservas.setValue(reservas);
+    }
+
+    public void addReserva(String localID, String nombre, long telefono, String local, long personas, long año, long mes, long dia, long hora, long minuto){
+        Reserva reserva = new Reserva(localID,nombre,telefono,local,personas,año,mes,dia,hora,minuto);
         if (reserva != null){
-            mReservas.getValue().add(reserva);
-            mReservas.setValue(mReservas.getValue());
             reserva.saveReserva();
-            mUsuario.getValue().addReserva(reserva.getId());
-            mUsuario.getValue().updateUsuarioReserva();
+            Usuario.usuario_actual.addReserva(reserva.getId());
+            Usuario.usuario_actual.saveUsuario();
         }
     }
 }

@@ -64,7 +64,7 @@
 
     <LinearLayout
         android:id="@+id/Locales"
-        android:layout_width="398dp"
+        android:layout_width="match_parent"
         android:layout_height="478dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -74,8 +74,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/lista_cards_restaurantes"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>

@@ -1,6 +1,7 @@
 package com.example.search_eat_pis.Model;
 
 import java.util.Date;
+import java.util.Locale;
 import java.util.UUID;
 import java.util.Calendar;
 import java.util.TimeZone;
@@ -54,10 +55,9 @@ public class Reserva {
 
     public String getFecha() {
         String sFecha = Integer.toString(fecha.get(Calendar.DAY_OF_MONTH))
-                + "/" + Integer.toString(fecha.get(Calendar.MONTH))
+                + "/" + Integer.toString(fecha.get(Calendar.MONTH)+1)
                 + "/" + Integer.toString(fecha.get(Calendar.YEAR))
-                + " " + Integer.toString(fecha.get(Calendar.HOUR_OF_DAY))
-                + ":" + Integer.toString(fecha.get(Calendar.MINUTE));
+                + " " + String.format(Locale.getDefault(), "%02d:%02d", fecha.get(Calendar.HOUR_OF_DAY),fecha.get(Calendar.MINUTE));
         return sFecha;
     }
 
@@ -65,12 +65,20 @@ public class Reserva {
         return local;
     }
 
+    public long tiempoReal(Calendar cal){
+        long l = (cal.get(Calendar.YEAR) * 365 * 24 * 60 +
+                cal.get(Calendar.DAY_OF_YEAR) * 24 * 60 +
+                cal.get(Calendar.HOUR_OF_DAY) * 60 +
+                cal.get(Calendar.MINUTE));
+        return l;
+    }
+
     public boolean valorar() {
         TimeZone tz = TimeZone.getTimeZone("GMT+2");
         Calendar actual = Calendar.getInstance(tz);
-        int tiempo = fecha.compareTo(actual);
-
-        if (tiempo >= 1000 * 60 * 30) {
+        long tiempoReserva = tiempoReal(fecha);
+        long tiempoActual = tiempoReal(actual);
+        if(tiempoActual >= tiempoReserva + 30){
             return true;
         }
         return false;

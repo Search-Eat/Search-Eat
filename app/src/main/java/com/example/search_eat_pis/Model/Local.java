@@ -61,7 +61,7 @@ public class Local {
 
     public String getNombre(){return nombre;}
 
-    public double getValoracion(){return valoracion;}
+    public double getValoracion(){ return (double) Math.round(valoracion*10)/10; }
 
     public String getNumValoraciones(){
         if(num_valoraciones == 1){
@@ -107,7 +107,7 @@ public class Local {
         this.valoracion = (val + num)/ num_valoraciones;
     }
 
-    public void updateValociones(){
+    public void updateValoraciones(){
         adapter.updateValoracion(iD,valoracion,num_valoraciones);
     }
 

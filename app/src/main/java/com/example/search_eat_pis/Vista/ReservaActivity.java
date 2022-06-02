@@ -1,6 +1,8 @@
 package com.example.search_eat_pis.Vista;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -9,12 +11,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.example.search_eat_pis.Controller.DatabaseAdapter;
+import com.example.search_eat_pis.Controller.ViewModel;
+import com.example.search_eat_pis.Model.Reserva;
+import com.example.search_eat_pis.Model.Usuario;
 import com.example.search_eat_pis.R;
 
 import java.util.Calendar;
@@ -25,11 +32,13 @@ public class ReservaActivity extends AppCompatActivity implements DatePickerDial
     private TextView textView_Fecha_Reserva;
     private TextView textView_Hora_Reserva;
     private TextView textView_NumPersonas_Reserva;
+    private TextView nombre, telefono;
     private ImageView imagenLocal;
     private TextView nombreLocal;
     private NumberPicker numberPicker;
     private Button timebutton;
-    private int hour, minute;
+    private ViewModel viewModel;
+    private int hour, minute, year, month, day, personas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,21 +50,27 @@ public class ReservaActivity extends AppCompatActivity implements DatePickerDial
         textView_NumPersonas_Reserva = findViewById(R.id.textView_numPersonas_Reserva);
         numberPicker = (NumberPicker) findViewById(R.id.numberPicker);
         nombreLocal = findViewById(R.id.textView_NombreRest_Reserva);
+        nombre = findViewById(R.id.editTextNombreApellidos_Reserva);
+        telefono = findViewById(R.id.editTextNumTel_Reserva);
         imagenLocal = findViewById(R.id.imageView_avatar);
 
+        nombre.setText("Nombre: " + Usuario.usuario_actual.getNombre());
+        telefono.setText("Teléfono: " + Long.toString(Usuario.usuario_actual.getTelefono()));
         nombreLocal.setText(getIntent().getStringExtra("nombre"));
+        setLiveDataObservers();
         DatabaseAdapter adapter = DatabaseAdapter.databaseAdapter;
         adapter.downloadPhotoFromStorage("locales/",getIntent().getStringExtra("id"),imagenLocal);
 
         numberPicker.setMaxValue(15);
         numberPicker.setMinValue(0);
-        numberPicker.setValue(2);
+        numberPicker.setValue(0);
 
 
 
         numberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker numberPicker, int oldValue, int newValue) {
+                personas = newValue;
                 textView_NumPersonas_Reserva.setText("Sois " + newValue + " personas");
             }
         });
@@ -79,7 +94,10 @@ public class ReservaActivity extends AppCompatActivity implements DatePickerDial
 
     @Override
     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-        String fecha = day + "/" + month + "/" + year;
+        this.year = year;
+        this.month = month;
+        this.day = day;
+        String fecha = day + "/" + (month+1) + "/" + year;
         textView_Fecha_Reserva.setText(fecha);
     }
 
@@ -98,7 +116,28 @@ public class ReservaActivity extends AppCompatActivity implements DatePickerDial
         timePickerDialog.show();
     }
     public void Reservar(View view){
-        Intent reservar_main = new Intent(this, MainMenu_Navegacion.class);
-        startActivity(reservar_main);
+        viewModel.addReserva(getIntent().getStringExtra("id"),
+                                       Usuario.usuario_actual.getNombre(),
+                                       Usuario.usuario_actual.getTelefono(),
+                                       getIntent().getStringExtra("nombre"),
+                                (long) personas,
+                                (long) year,
+                                (long) month,
+                                (long) day,
+                                (long) hour,
+                                (long) minute);
+    }
+    public void setLiveDataObservers() {
+        //Subscribe the activity to the observable
+        viewModel = new ViewModelProvider(this).get(ViewModel.class);
+
+        final Observer<String> observerToast = new Observer<String>() {
+            @Override
+            public void onChanged(String t) {
+                Toast.makeText(ReservaActivity.this, t, Toast.LENGTH_SHORT).show();
+            }
+        };
+
+        viewModel.getToast().observe(this, observerToast);
     }
 }

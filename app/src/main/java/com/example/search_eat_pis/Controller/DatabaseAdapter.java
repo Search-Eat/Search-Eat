@@ -24,6 +24,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -199,7 +200,7 @@ public class DatabaseAdapter extends Activity {
                 });
     }
 
-    public void saveReserva (String id, String localID, String nombre, long telefono, String local, long personas, long año, long dia, long mes, long hora, long minuto) {
+    public void saveReserva (String id, String localID, String nombre, long telefono, String local, long personas, long año, long mes, long dia, long hora, long minuto) {
 
         // Create a new user with a first and last name
         Map<String, Object> reserva = new HashMap<>();
@@ -210,19 +211,20 @@ public class DatabaseAdapter extends Activity {
         reserva.put("local", local);
         reserva.put("personas", personas);
         reserva.put("año", año);
-        reserva.put("dia", dia);
         reserva.put("mes", mes);
+        reserva.put("dia", dia);
         reserva.put("hora", hora);
         reserva.put("minuto", minuto);
 
         Log.d(TAG, "saveReserva");
         // Add a new document with a generated ID
-        db.collection("Reserva").document(id)
+        db.collection("Reservas").document(id)
                 .set(reserva)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Log.d(TAG, "DocumentSnapshot successfully written!");
+                        listener.setToast("Reserva guardada con éxito.");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -344,12 +346,9 @@ public class DatabaseAdapter extends Activity {
                     }
                 });
     }
-    public void updateReservas(ArrayList<String> reservas, String id){
+    public void deleteReservaUsuario(String reserva, String id){
         Log.d(TAG, "updateUsuario");
-        db.collection("Usuario").document(id)
-                .update(
-                        "reservas", reservas
-                );
+        db.collection("Usuarios").document(id).update("reservas", FieldValue.arrayRemove(reserva));
     }
     public void downloadPhotoFromStorage(String path, String id, ImageView img){
         StorageReference storageReference = storage.getReference().child(path+id+".png");

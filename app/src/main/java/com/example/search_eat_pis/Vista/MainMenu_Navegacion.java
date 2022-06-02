@@ -69,7 +69,7 @@ public class MainMenu_Navegacion extends AppCompatActivity {
     }
 
     public void init(ArrayList<Local> elements){
-         this.listAdapter = new ListAdapter(elements,this);
+        this.listAdapter = new ListAdapter(elements, getIntent().getStringExtra("boton"),this);
         RecyclerView recyclerView = findViewById(R.id.lista_cards_restaurantes);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

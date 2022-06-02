@@ -34,15 +34,10 @@ public class Usuario {
         adapter.saveUsuario(this.correo, this.nombre, this.telefono, this.contraseña, this.reservas);
     }
 
-    public void addReserva(String r){
-        this.reservas.add(r);
-    }
-
-    public void updateUsuarioReserva() { adapter.updateReservas(reservas, correo);}
+    public void addReserva(String r){ this.reservas.add(r); }
 
     public void deleteReserva(String id){
         this.reservas.remove(id);
-        updateUsuarioReserva();
-        adapter.deleteReserva(id);
+        adapter.deleteReservaUsuario(id,correo);
     }
 }
