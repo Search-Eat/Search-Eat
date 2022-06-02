@@ -170,6 +170,7 @@ public class ViewModel extends AndroidViewModel implements DatabaseAdapter.vmInt
             else{
                 local.addValoracion(valoración);
                 local.updateValoraciones();
+                eliminarReserva(idx);
             }
         }
         else{
