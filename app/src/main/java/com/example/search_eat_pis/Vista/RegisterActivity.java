@@ -44,7 +44,30 @@ public class RegisterActivity extends AppCompatActivity {
 
     //Metodo SignUp boton
     public void SignUp(View view){
-        viewModel.isValidCorreo(editTextEmail_Register.getText().toString());
+        if(editTextNombre_Register.getText().toString().isEmpty()){
+            Toast.makeText(RegisterActivity.this, "No has introducido el nombre.", Toast.LENGTH_SHORT).show();
+        }
+        else if(editTextPassword_Register.getText().toString().isEmpty()){
+            Toast.makeText(RegisterActivity.this, "No has introducido la contraseña.", Toast.LENGTH_SHORT).show();
+        }
+        else if(editTextPassword_Register.getText().length() < 8){
+            Toast.makeText(RegisterActivity.this, "La contraseña es muy corta, mínimo 8 caracteres.", Toast.LENGTH_SHORT).show();
+        }
+        else if(editTextEmail_Register.getText().toString().isEmpty()){
+            Toast.makeText(RegisterActivity.this, "No has introducido el correo.", Toast.LENGTH_SHORT).show();
+        }
+        else if(editTextNumTel_Register.getText().toString().isEmpty()){
+            Toast.makeText(RegisterActivity.this, "No has introducido el número de teléfono.", Toast.LENGTH_SHORT).show();
+        }
+        else if(editTextNumTel_Register.getText().toString().length() != 9){
+            Toast.makeText(RegisterActivity.this, "El número de teléfono no es válido.", Toast.LENGTH_SHORT).show();
+        }
+        else if(Long.parseLong(editTextNumTel_Register.getText().toString()) < 600000000){
+            Toast.makeText(RegisterActivity.this, "El número de teléfono no es válido.", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            viewModel.isValidCorreo(editTextEmail_Register.getText().toString());
+        }
     }
 
     public void setLiveDataObservers() {

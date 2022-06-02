@@ -38,8 +38,12 @@ public class LoginActivity extends AppCompatActivity {
 
     //Metodo LogIn boton
     public void LogIn(View view){
-        viewModel.iniUsuario(editTextEmail_LogIn.getText().toString(), editTextPassword_LogIn.getText().toString());
-
+        if(!editTextEmail_LogIn.getText().toString().isEmpty() && !editTextPassword_LogIn.getText().toString().isEmpty()){
+            viewModel.iniUsuario(editTextEmail_LogIn.getText().toString(), editTextPassword_LogIn.getText().toString());
+        }
+        else{
+            Toast.makeText(LoginActivity.this, "No has introducido el correo o la contraseña.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     //Metodo Register boton

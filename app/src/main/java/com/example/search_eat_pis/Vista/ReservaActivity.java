@@ -26,6 +26,7 @@ import com.example.search_eat_pis.R;
 
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.TimeZone;
 
 public class ReservaActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
@@ -116,17 +117,51 @@ public class ReservaActivity extends AppCompatActivity implements DatePickerDial
         timePickerDialog.show();
     }
     public void Reservar(View view){
-        viewModel.addReserva(getIntent().getStringExtra("id"),
-                                       Usuario.usuario_actual.getNombre(),
-                                       Usuario.usuario_actual.getTelefono(),
-                                       getIntent().getStringExtra("nombre"),
-                                (long) personas,
-                                (long) year,
-                                (long) month,
-                                (long) day,
-                                (long) hour,
-                                (long) minute);
+        if(validData()){
+            viewModel.addReserva(getIntent().getStringExtra("id"),
+                    Usuario.usuario_actual.getNombre(),
+                    Usuario.usuario_actual.getTelefono(),
+                    getIntent().getStringExtra("nombre"),
+                    (long) personas,
+                    (long) year,
+                    (long) month,
+                    (long) day,
+                    (long) hour,
+                    (long) minute);
+        }
+        else{
+            Toast.makeText(ReservaActivity.this, "Los datos de la reserva no son válidos.", Toast.LENGTH_SHORT).show();
+        }
     }
+
+    public boolean validData(){
+        if (personas == 0){
+            return false;
+        }
+
+        Calendar fecha = Calendar.getInstance();
+        fecha.set(year,month,day,hour,minute);
+
+        TimeZone tz = TimeZone.getTimeZone("GMT+2");
+        Calendar actual = Calendar.getInstance(tz);
+
+        long tiempoReserva = tiempoReal(fecha);
+        long tiempoActual = tiempoReal(actual);
+
+        if(tiempoActual > tiempoReserva){
+            return false;
+        }
+        return true;
+    }
+
+    public long tiempoReal(Calendar cal){
+        long l = (cal.get(Calendar.YEAR) * 365 * 24 * 60 +
+                cal.get(Calendar.DAY_OF_YEAR) * 24 * 60 +
+                cal.get(Calendar.HOUR_OF_DAY) * 60 +
+                cal.get(Calendar.MINUTE));
+        return l;
+    }
+
     public void setLiveDataObservers() {
         //Subscribe the activity to the observable
         viewModel = new ViewModelProvider(this).get(ViewModel.class);
