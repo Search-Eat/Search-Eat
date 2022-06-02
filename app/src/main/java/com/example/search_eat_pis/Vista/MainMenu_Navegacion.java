@@ -8,6 +8,8 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -37,10 +39,7 @@ import java.util.List;
 
 public class MainMenu_Navegacion extends AppCompatActivity {
     private SearchView buscador;
-    private ActivityMainMenuNavegacionBinding binding;
-    private Sector sectores;
-    private LocationManager locManager;
-    private Location loc;
+    private Button precio, valoracion, distancia;
     static public Coordenada cordenada;
     private ViewModel viewModel;
     ListAdapter listAdapter;
@@ -64,6 +63,27 @@ public class MainMenu_Navegacion extends AppCompatActivity {
             public boolean onQueryTextChange(String s) {
                 listAdapter.filtrado(s);
                 return false;
+            }
+        });
+        precio = findViewById(R.id.Ordenar_precio);
+        precio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewModel.sortLocalPrecio();
+            }
+        });
+        distancia = findViewById(R.id.Ordenar_distancia);
+        distancia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewModel.sortLocalDistancia();
+            }
+        });
+        valoracion = findViewById(R.id.Ordenar_valoracion);
+        valoracion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewModel.sortLocalValoracion();
             }
         });
     }

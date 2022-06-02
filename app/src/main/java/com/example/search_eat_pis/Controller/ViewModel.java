@@ -2,11 +2,13 @@ package com.example.search_eat_pis.Controller;
 
 import android.app.Application;
 
-import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.search_eat_pis.Model.ComparadorLocalDistancia;
+import com.example.search_eat_pis.Model.ComparadorLocalPrecio;
+import com.example.search_eat_pis.Model.ComparadorLocalValoracion;
 import com.example.search_eat_pis.Model.Coordenada;
 import com.example.search_eat_pis.Model.Local;
 import com.example.search_eat_pis.Model.Reserva;
@@ -14,7 +16,7 @@ import com.example.search_eat_pis.Model.Sector;
 import com.example.search_eat_pis.Model.Usuario;
 
 import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.Collections;
 import java.util.Iterator;
 
 public class ViewModel extends AndroidViewModel implements DatabaseAdapter.vmInterface{
@@ -176,6 +178,24 @@ public class ViewModel extends AndroidViewModel implements DatabaseAdapter.vmInt
         else{
             setToast("La valoración no está disponible.");
         }
+    }
+
+    public void sortLocalDistancia(){
+        ArrayList<Local> locales = mLocales.getValue();
+        Collections.sort(locales, new ComparadorLocalDistancia());
+        mLocales.setValue(locales);
+    }
+
+    public void sortLocalPrecio(){
+        ArrayList<Local> locales = mLocales.getValue();
+        Collections.sort(locales, new ComparadorLocalPrecio());
+        mLocales.setValue(locales);
+    }
+
+    public void sortLocalValoracion(){
+        ArrayList<Local> locales = mLocales.getValue();
+        Collections.sort(locales, new ComparadorLocalValoracion());
+        mLocales.setValue(locales);
     }
 
     public void eliminarReserva(int idx){

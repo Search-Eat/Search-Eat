@@ -2,6 +2,8 @@ package com.example.search_eat_pis.Model;
 
 import java.util.ArrayList;
 import java.lang.String;
+import java.util.Comparator;
+
 import com.example.search_eat_pis.Controller.DatabaseAdapter;
 
 public class Local {
@@ -45,6 +47,10 @@ public class Local {
         this.distancia = dist;
     }
 
+    public double getNumberDistancia(){
+        return distancia;
+    }
+
     public String getDistancia(){
         if (distancia < 1){
             if (Math.round(distancia*1000) == 1){
@@ -71,8 +77,6 @@ public class Local {
     }
 
     public String getDireccion(){return direccion;}
-
-    public ArrayList<String> getEtiquetas(){return etiquetas;}
 
     public long getPrecio(){return precio;}
 
@@ -115,3 +119,4 @@ public class Local {
         return coordenada;
     }
 }
+

@@ -34,32 +34,34 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/Ordenar"
+            android:id="@+id/Ordenar_valoracion"
             style="?android:attr/buttonBarButtonStyle"
-            android:textColor="@color/black"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/ordenar"
-            app:iconTint="#F8F5F5" />
+            android:text="Valoración"
+            android:textColor="@color/black"
+            app:iconTint="@color/Color_Fondo" />
 
         <Button
-            android:id="@+id/Abierto"
+            android:id="@+id/Ordenar_distancia"
             style="?android:attr/buttonBarButtonStyle"
-            android:textColor="@color/black"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/abierto" />
+            android:text="Distancia"
+            android:textColor="@color/black"
+            app:iconTint="@color/Color_Fondo" />
 
         <Button
-            android:id="@+id/precio"
+            android:id="@+id/Ordenar_precio"
             style="?android:attr/buttonBarButtonStyle"
-            android:textColor="@color/black"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Precio" />
+            android:text="Precio"
+            android:textColor="@color/black"
+            app:iconTint="@color/Color_Fondo" />
     </LinearLayout>
 
     <LinearLayout
