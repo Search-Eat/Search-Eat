@@ -54,7 +54,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="@string/nombre_restaurante"
-                    android:textSize="18sp" />
+                    app:autoSizeTextType = "uniform"
+                    app:autoSizePresetSizes = "@array/autosize_text_sizes"/>
             </LinearLayout>
 
             <LinearLayout
@@ -71,7 +72,10 @@
                     android:id="@+id/t_reserva"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:autoSizeTextType = "uniform"
+                    app:autoSizePresetSizes = "@array/autosize_text_sizes"
                     android:text="@string/reserva" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -103,14 +107,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/puntuacion" />
+                app:autoSizeTextType = "uniform"
+                app:autoSizePresetSizes = "@array/autosize_text_sizes"/>
 
             <TextView
                 android:id="@+id/direccion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/direccion" />
+                app:autoSizeTextType = "uniform"
+                app:autoSizePresetSizes = "@array/autosize_text_sizes"/>
 
         </LinearLayout>
 
@@ -133,14 +139,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/distancia" />
+                    app:autoSizeTextType = "uniform"
+                    app:autoSizePresetSizes = "@array/autosize_text_sizes"/>
 
                 <TextView
                     android:id="@+id/precio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/precio" />
+                    app:autoSizeTextType = "uniform"
+                    app:autoSizePresetSizes = "@array/autosize_text_sizes"/>
 
             </LinearLayout>
 

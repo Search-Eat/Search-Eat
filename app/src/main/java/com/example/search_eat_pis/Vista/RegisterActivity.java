@@ -51,7 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(RegisterActivity.this, "No has introducido la contraseña.", Toast.LENGTH_SHORT).show();
         }
         else if(editTextPassword_Register.getText().length() < 8){
-            Toast.makeText(RegisterActivity.this, "La contraseña es muy corta, mínimo 8 caracteres.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegisterActivity.this, "Introduzca contraseña de 8 caracteres o más.", Toast.LENGTH_SHORT).show();
         }
         else if(editTextEmail_Register.getText().toString().isEmpty()){
             Toast.makeText(RegisterActivity.this, "No has introducido el correo.", Toast.LENGTH_SHORT).show();

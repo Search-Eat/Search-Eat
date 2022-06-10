@@ -92,10 +92,10 @@ public class ListAdapter_Reserva extends RecyclerView.Adapter<ListAdapter_Reserv
 
         void binData(final Reserva item){
             local.setText(item.getLocal());
-            nombre.setText(" Nombre: " + item.getNombre());
             telefono.setText(" Teléfono: " + Long.toString(item.getTelefono()));
             fecha.setText(" Fecha de reserva: " + item.getFecha());
             num_pers.setText( " Número de personas: " + Long.toString(item.getPersonas()));
+            nombre.setText(" Nombre: " + item.getNombre());
             adapter.downloadPhotoFromStorage("locales/",item.getLocalID(),imagen);
         }
     }

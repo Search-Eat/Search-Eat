@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,7 +62,9 @@ public class PerfilActivity extends AppCompatActivity implements ListAdapter_Res
     public void iniPerfil(){
         nombre.setText("Nombre: " + Usuario.usuario_actual.getNombre());
         correo.setText("Correo: " + Usuario.usuario_actual.getCorreo());
+        correo.setTextSize(TypedValue.COMPLEX_UNIT_SP,nombre.getTextSize());
         telefono.setText("Teléfono: " + Long.toString(Usuario.usuario_actual.getTelefono()));
+        telefono.setTextSize(TypedValue.COMPLEX_UNIT_SP,nombre.getTextSize());
     }
 
     public void setLiveDataObservers() {

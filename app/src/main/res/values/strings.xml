@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Search_Eat_PIS</string>
+    <string name="app_name">Search Eat</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="title_activity_main_menu_navegacion">MainMenu_Navegacion</string>
     <string name="title_home">Home</string>
@@ -16,18 +16,18 @@
     <string name="boton_para_puntuar4">boton para puntuar</string>
     <string name="boton_para_puntuar5">boton para puntuar</string>
     <string name="boton_para_ir_al_maps">Boton para ir al maps</string>
-    <string name="text_view_email">Email</string>
-    <string name="text_view_password">Password</string>
+    <string name="text_view_email">Correo</string>
+    <string name="text_view_password">Contraseña</string>
     <string name="text_view_nombre">Nombre</string>
-    <string name="text_view_num_tel">Num_tel</string>
+    <string name="text_view_num_tel">Número de teléfono</string>
     <string name="text_view_fecha">Fecha Reserva</string>
-    <string name="text_view_numPersonas">Numero Personas</string>
+    <string name="text_view_numPersonas">Número Personas</string>
     <string name="text_view_hora">Hora Reserva</string>
     <string name="text_view_reservar">Reservar</string>
     <string name="text_view_nombre_restaurante">Nombre del Restaurante</string>
-    <string name="button_login">LogIn</string>
-    <string name="button_signup">SignUp</string>
-    <string name="button_register">Register</string>
+    <string name="button_login">Iniciar sesión</string>
+    <string name="button_signup">Registrarse</string>
+    <string name="button_register">Registrarse</string>
     <string name="button_fecha">Sel. Fecha</string>
     <string name="button_hora">Sel. Hora</string>
     <string name="creadores">Creadores</string>

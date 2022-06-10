@@ -21,30 +21,32 @@
         android:layout_width="match_parent"
         android:layout_height="34dp"
         android:layout_marginStart="40dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginTop="228dp"
-        android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/perfil_nom"
         android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TouchTargetSizeCheck" />
+        app:autoSizeTextType = "uniform"
+        app:autoSizePresetSizes = "@array/autosize_text_sizes" />
 
     <TextView
         android:id="@+id/telefonoPerfil"
         android:layout_width="match_parent"
         android:layout_height="34dp"
         android:layout_marginStart="40dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginTop="336dp"
-        android:ems="10"
         android:hint="@string/perfil_num_tel"
         android:inputType="phone"
         android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TouchTargetSizeCheck" />
+        app:autoSizeTextType = "uniform"
+        app:autoSizePresetSizes = "@array/autosize_text_sizes" />
 
     <TextView
         android:id="@+id/correoPerfil"
@@ -52,14 +54,15 @@
         android:layout_height="34dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="284dp"
-        android:ems="10"
+        android:layout_marginEnd="10dp"
         android:inputType="textPersonName"
         android:text="@string/perfil_correo"
         android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TouchTargetSizeCheck" />
+        app:autoSizeTextType = "uniform"
+        app:autoSizePresetSizes = "@array/autosize_text_sizes" />
 
     <LinearLayout
         android:id="@+id/Reservas"

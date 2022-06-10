@@ -18,79 +18,6 @@
         android:background="@color/Color_Secundario">
 
         <LinearLayout
-            android:id="@+id/reserva_Local"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:id="@+id/Imagen_reserva"
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/imagen_local_reserva"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:srcCompat="@drawable/ic_restaurant_black_24dp" />
-            </LinearLayout>
-
-            <Space
-                android:layout_width="5dp"
-                android:layout_height="match_parent" />
-
-            <LinearLayout
-                android:id="@+id/mid1"
-                android:layout_width="136dp"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/Nombre_Restaurante_Reserva"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="@string/nombre_restaurante"
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/mid3"
-                android:layout_width="83dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="18dp" />
-
-                <TextView
-                    android:id="@+id/text_reserva"
-                    android:layout_width="78dp"
-                    android:layout_height="wrap_content"
-                    android:text="Valorar:" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/Boton_de_valorar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <ImageButton
-                    android:id="@+id/boton_valorar"
-                    android:layout_width="0dp"
-                    android:layout_height="54dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/round_btn"
-                    android:contentDescription="@string/imagen_de_reserva"
-                    app:srcCompat="@drawable/ic_stars_white_24dp" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
             android:id="@+id/Reserva_Cancelar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -104,31 +31,97 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/nombre_reserva"
+                <LinearLayout
+                    android:id="@+id/reserva_Local"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_height="70dp"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/telefono_reserva"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    <LinearLayout
+                        android:id="@+id/Imagen_reserva"
+                        android:layout_width="80dp"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/numero_personas"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/distancia" />
+                        <ImageView
+                            android:id="@+id/imagen_local_reserva"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:srcCompat="@drawable/ic_restaurant_black_24dp" />
+                    </LinearLayout>
 
-                <TextView
-                    android:id="@+id/fecha_reserva"
+                    <Space
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent" />
+
+                    <LinearLayout
+                        android:id="@+id/mid1"
+                        android:layout_width="136dp"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/Nombre_Restaurante_Reserva"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:autoSizePresetSizes="@array/autosize_text_sizes"
+                            app:autoSizeTextType="uniform" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/mid3"
+                        android:layout_width="83dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <Space
+                            android:layout_width="match_parent"
+                            android:layout_height="18dp" />
+
+                        <TextView
+                            android:id="@+id/text_reserva"
+                            android:layout_width="78dp"
+                            android:layout_height="wrap_content"
+                            android:text="Valorar:"
+                            app:autoSizePresetSizes="@array/autosize_text_sizes"
+                            app:autoSizeTextType="uniform" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/precio" />
+                    android:layout_height="91dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/nombre_reserva"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        app:autoSizePresetSizes="@array/autosize_text_sizes"
+                        app:autoSizeTextType="uniform" />
+
+                    <TextView
+                        android:id="@+id/telefono_reserva"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        app:autoSizePresetSizes="@array/autosize_text_sizes"
+                        app:autoSizeTextType="uniform" />
+
+                    <TextView
+                        android:id="@+id/numero_personas"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        app:autoSizePresetSizes="@array/autosize_text_sizes"
+                        app:autoSizeTextType="uniform" />
+
+                    <TextView
+                        android:id="@+id/fecha_reserva"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        app:autoSizePresetSizes="@array/autosize_text_sizes"
+                        app:autoSizeTextType="uniform" />
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -140,13 +133,21 @@
                 android:orientation="vertical">
 
                 <ImageButton
+                    android:id="@+id/boton_valorar"
+                    android:layout_width="match_parent"
+                    android:layout_height="82dp"
+                    android:background="@drawable/round_btn"
+                    android:contentDescription="@string/imagen_de_reserva"
+                    app:srcCompat="@drawable/ic_stars_white_24dp" />
+
+                <ImageButton
                     android:id="@+id/boton_eliminar_reserva"
-                    android:layout_width="68dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/round_btn"
                     android:contentDescription="@string/boton_para_ir_al_maps"
-                    app:srcCompat="@drawable/ic_cancel_white_48dp"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    app:srcCompat="@drawable/ic_cancel_white_48dp" />
+
             </LinearLayout>
 
         </LinearLayout>

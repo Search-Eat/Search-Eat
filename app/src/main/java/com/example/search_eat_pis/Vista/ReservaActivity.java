@@ -8,6 +8,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -58,6 +59,7 @@ public class ReservaActivity extends AppCompatActivity implements DatePickerDial
         nombre.setText("Nombre: " + Usuario.usuario_actual.getNombre());
         telefono.setText("Teléfono: " + Long.toString(Usuario.usuario_actual.getTelefono()));
         nombreLocal.setText(getIntent().getStringExtra("nombre"));
+
         setLiveDataObservers();
         DatabaseAdapter adapter = DatabaseAdapter.databaseAdapter;
         adapter.downloadPhotoFromStorage("locales/",getIntent().getStringExtra("id"),imagenLocal);
@@ -129,13 +131,11 @@ public class ReservaActivity extends AppCompatActivity implements DatePickerDial
                     (long) hour,
                     (long) minute);
         }
-        else{
-            Toast.makeText(ReservaActivity.this, "Los datos de la reserva no son válidos.", Toast.LENGTH_SHORT).show();
-        }
     }
 
     public boolean validData(){
         if (personas == 0){
+            Toast.makeText(ReservaActivity.this, "Selecciona el número de personas.", Toast.LENGTH_SHORT).show();
             return false;
         }
 
@@ -145,21 +145,36 @@ public class ReservaActivity extends AppCompatActivity implements DatePickerDial
         TimeZone tz = TimeZone.getTimeZone("GMT+2");
         Calendar actual = Calendar.getInstance(tz);
 
-        long tiempoReserva = tiempoReal(fecha);
-        long tiempoActual = tiempoReal(actual);
+        int diasReserva = tiempoEnDias(fecha);
+        int diasActual = tiempoEnDias(actual);
 
-        if(tiempoActual > tiempoReserva){
+        if(diasActual > diasReserva){
+            Toast.makeText(ReservaActivity.this, "Selecciona una fecha válida.", Toast.LENGTH_SHORT).show();
             return false;
         }
+
+        int minReserva = tiempoEnMinutos(fecha);
+        int minActual = tiempoEnMinutos(actual);
+
+        if(minActual > minReserva){
+            Toast.makeText(ReservaActivity.this, "Selecciona una hora válida.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
         return true;
     }
 
-    public long tiempoReal(Calendar cal){
-        long l = (cal.get(Calendar.YEAR) * 365 * 24 * 60 +
+    public int tiempoEnDias(Calendar cal){
+       int i = cal.get(Calendar.YEAR) * 365 + cal.get(Calendar.DAY_OF_YEAR);
+       return i;
+    }
+
+    public int tiempoEnMinutos(Calendar cal){
+        int i = cal.get(Calendar.YEAR) * 365 * 24 * 60 +
                 cal.get(Calendar.DAY_OF_YEAR) * 24 * 60 +
                 cal.get(Calendar.HOUR_OF_DAY) * 60 +
-                cal.get(Calendar.MINUTE));
-        return l;
+                cal.get(Calendar.MINUTE);
+        return i;
     }
 
     public void setLiveDataObservers() {
